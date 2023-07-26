@@ -1,60 +1,46 @@
-const { test } = require ('../fixture/fixture');
+const { test } = require('../fixture/fixture');
+const { users } = require('../test-data/user-data');
 
+
+test.beforeEach(async ({ page }) => {
+    await page.goto('/');
+});
 
 // Добавить экспекты
-test('success login into account', async ({ page, loginPage }) => {
-    await page.goto('https://www.saucedemo.com/');
-
-    await loginPage.fillUsernameInputField('standard_user');
-    await loginPage.fillPasswordInputField('secret_sauce');
-    await loginPage.submitAuthForm();
-
-});
-
-test('try to login with locked user', async ({ page, loginPage }) => {
-    await page.goto('https://www.saucedemo.com/');
-
-    await loginPage.fillUsernameInputField('locked_out_user');
-    await loginPage.fillPasswordInputField('secret_sauce');
+test('success login into account', async ({ loginPage, productList }) => {
+    await loginPage.fillUsernameInputField(users.username.standart);
+    await loginPage.fillPasswordInputField(users.password.valid);
     await loginPage.submitAuthForm();
 });
 
-test('try to login with incorrect username', async ({ page, loginPage }) => {
-    await page.goto('https://www.saucedemo.com/');
-
-    await loginPage.fillUsernameInputField('standard_use');
-    await loginPage.fillPasswordInputField('secret_sauce');
+test('try to login with locked user', async ({ loginPage }) => {
+    await loginPage.fillUsernameInputField(users.username.locked);
+    await loginPage.fillPasswordInputField(users.password.valid);
     await loginPage.submitAuthForm();
 });
 
-test('try to login with incorrect password', async ({ page, loginPage }) => {
-    await page.goto('https://www.saucedemo.com/');
-
-    await loginPage.fillUsernameInputField('standard_user');
-    await loginPage.fillPasswordInputField('secret_sauc');
+test('try to login with incorrect username', async ({ loginPage }) => {
+    await loginPage.fillUsernameInputField(users.username.wrong);
+    await loginPage.fillPasswordInputField(users.password.valid);
     await loginPage.submitAuthForm();
 });
 
-test('try to login with without username', async ({ page, loginPage }) => {
-    await page.goto('https://www.saucedemo.com/');
-
-    await loginPage.fillUsernameInputField('');
-    await loginPage.fillPasswordInputField('secret_sauc');
+test('try to login with incorrect password', async ({ loginPage }) => {
+    await loginPage.fillUsernameInputField(users.username.standart);
+    await loginPage.fillPasswordInputField(users.password.wrong);
     await loginPage.submitAuthForm();
 });
 
-test('try to login with without password', async ({ page, loginPage }) => {
-    await page.goto('https://www.saucedemo.com/');
-
-    await loginPage.fillUsernameInputField('standard_user');
-    await loginPage.fillPasswordInputField('');
+test('try to login with without username', async ({ loginPage }) => {
+    await loginPage.fillPasswordInputField(users.password.valid);
     await loginPage.submitAuthForm();
 });
 
-test('try to login with without username and password', async ({ page, loginPage }) => {
-    await page.goto('https://www.saucedemo.com/');
+test('try to login with without password', async ({ loginPage }) => {
+    await loginPage.fillUsernameInputField(users.username.standart);
+    await loginPage.submitAuthForm();
+});
 
-    await loginPage.fillUsernameInputField('');
-    await loginPage.fillPasswordInputField('');
+test('try to login without username and password', async ({ loginPage }) => {
     await loginPage.submitAuthForm();
 });

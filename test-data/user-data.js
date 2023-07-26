@@ -1,8 +1,9 @@
-export default users = {
+const users = {
     username: {
-        standartUser: 'standard_user',
-        lockedUser: 'locked_out_user',
-        problemUser: 'problem_user',
+        standart: 'standard_user',
+        locked: 'locked_out_user',
+        problem: 'problem_user',
+        wrong: 'user_standart',
         empty: ''
     },
     password : {
@@ -11,3 +12,5 @@ export default users = {
         empty: ''
     }
 }
+
+module.exports = { users };
