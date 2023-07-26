@@ -1,6 +1,6 @@
 import { expect } from "@playwright/test"
 
-class Header {
+export class Footer {
     constructor(page){
         this.page = page
     }
