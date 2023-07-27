@@ -14,4 +14,16 @@ export class Header {
     appLogo = '.app_logo'
     shoppingCartButton = '.shopping_cart_link'
     shoppingCartProductsQtyButton = '.shopping_cart_link'
+
+    async goToCart(){
+        await this.page.locator(this.shoppingCartButton).click();
+    }
+    
+    async checkCounterQty(cartCounter){
+        await expect(await this.page.locator(this.shoppingCartProductsQtyButton)).toHaveText(cartCounter)
+    }
+
+
+
+
 }
