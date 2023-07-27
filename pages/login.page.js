@@ -14,13 +14,15 @@ export class LoginPage {
     errorButton = '.error-button'
 
     async fillUsernameInputField(firstname){
-        await this.page.locator(this.usernameInputField).type(firstname)
+        await this.page.locator(this.usernameInputField).type(firstname);
+        await expect(await this.page.locator(this.usernameInputField)).toHaveValue(firstname);
     }
     async fillPasswordInputField(password){
-        await this.page.locator(this.passwordInputField).type(password)
+        await this.page.locator(this.passwordInputField).type(password);
+        await expect(await this.page.locator(this.passwordInputField)).toHaveValue(password);
     }
     async submitAuthForm(){
-        await this.page.click(this.loginButton)
+        await this.page.click(this.loginButton);
     }
     async verifyErrorMessageIsDisplayed(errorText) {
         await expect(await this.page.locator(this.errorMessage)).toHaveText(errorText);
@@ -30,8 +32,8 @@ export class LoginPage {
         await expect(await this.page.locator(this.errorMessage)).not.toBeVisible();
     }
     async successLoginToAccount (firstname, password) {
-        await this.page.locator(this.usernameInputField).type(firstname)
-        await this.page.locator(this.passwordInputField).type(password)
-        await this.page.click(this.loginButton)
+        await this.page.locator(this.usernameInputField).type(firstname);
+        await this.page.locator(this.passwordInputField).type(password);
+        await this.page.click(this.loginButton);
     }
 }
