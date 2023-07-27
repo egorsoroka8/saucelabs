@@ -6,21 +6,47 @@ test.beforeEach(async ({ page, loginPage }) => {
     await loginPage.successLoginToAccount(users.username.standart, users.password.valid);
 });
 
-test('check that all products have attributes', async ({ productList }) => {
-    for(let i = 0; i < 6; i++){
-        await productList.checkEachProductHaveAttributes(i);
-    }
+test('check that product page has all attributes', async ({ productList, productPage }) => {
+    await productList.clickOnTitle();
+    await productPage.chectThatProductHasAttributes();
 });
 
-test('check cart counter', async ({ productList, header }) => {
-    let cartCounter = 0;
-    cartCounter += await productList.addProductToCart();
-    await header.checkCounterQty(String(cartCounter));
-    cartCounter += await productList.removeProductFromCart();
+test('add and remove product from cart from product page', async ({ productList, productPage, header }) => {
+    await productList.clickOnTitle();
+    await productPage.addProductToCart();
+    await header.checkCounterQty('1');
+    await productPage.removeProductFromCart();
     await header.checkCounterQty('');
 });
 
-test.only('open product page by click on image', async ({ productList, productPage }) => {
-    await productList.clickOnImage();
-    await productPage.pageIsLoaded();
-})
+test('remove product from cart from product page', async ({ productList, productPage, header }) => {
+    await productList.addProductToCart();
+    await productList.clickOnTitle();
+    await header.checkCounterQty('1');
+    await productPage.removeProductFromCart();
+    await header.checkCounterQty('');
+});
+
+test('return to list page', async ({ productList, productPage }) => {
+    await productList.clickOnTitle();
+    await productPage.returnToListPage();
+    await productList.pageIsLoaded();
+});
+
+
+test.only('add product in product page and remove in list page', async ({ productList, productPage, header }) => {
+    await productList.clickOnTitle();
+    await productPage.addProductToCart();
+    await productPage.returnToListPage();
+    await productList.removeProductFromCart();
+    await header.checkCounterQty('');
+});
+
+test('check cart counter', async ({ productList, productPage, header }) => {
+    await productList.clickOnTitle();
+    let cartCounter = 0;
+    cartCounter += await productPage.addProductToCart();
+    await header.checkCounterQty(String(cartCounter));
+    cartCounter += await productPage.removeProductFromCart();
+    await header.checkCounterQty('');
+});

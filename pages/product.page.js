@@ -6,19 +6,41 @@ export class ProductPage {
     }
 
     // Sub Header
-    backToProductsButton = '[data-test=back-to-products]'
+    backToProductsButton = '#back-to-products'
     
     // Product
     productPage = '#inventory_item_container'
     productImage = '.inventory_details_img_container'
-    productTitle = '.inventory_details_name large_size'
+    productTitle = '.inventory_details_name.large_size'
     productDescription = '.inventory_details_desc.large_size'
     productPrice = '.inventory_details_price'
-    addToCartButton = `[data-test=add-to-cart-sauce-labs-${productName}]`
-    removeButton = `[data-test=remove-sauce-labs-${productName}]`
+    // addToCartButton = `[data-test=add-to-cart-sauce-labs-${productName}]`
+    // removeButton = `[data-test=remove-sauce-labs-${productName}]`
+    addToCartButton = `#add-to-cart-sauce-labs-backpack`
+    removeButton = `#remove-sauce-labs-backpack`
 
     async pageIsLoaded() {
         await expect(await this.page.locator(this.productPage)).toBeVisible();
     }
     
+    async chectThatProductHasAttributes() {
+        await expect(await this.page.locator(this.productPrice)).toHaveText(/$/);
+        await expect(await this.page.locator(this.productDescription)).toBeVisible();
+        await expect(await this.page.locator(this.productImage)).toBeEnabled();
+        await expect(await this.page.locator(this.productTitle)).toHaveText(/Sauce Labs/);
+    }
+
+    async addProductToCart(){
+        await this.page.locator(this.addToCartButton).click();
+        await expect(await this.page.locator(this.removeButton)).toBeEnabled();
+        return 1
+    }
+    async removeProductFromCart(){
+        await this.page.locator(this.removeButton).click();
+        await expect(await this.page.locator(this.addToCartButton)).toBeEnabled();
+        return -1
+    }
+    async returnToListPage(){
+        await this.page.locator(this.backToProductsButton).click();
+    }
 }

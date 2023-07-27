@@ -27,7 +27,7 @@ export class ProductListPage {
     removeButton = `#remove-sauce-labs-backpack`
     
     async pageIsLoaded() {
-        await expect(await this.page.locator(this.productList)).toBeLoaded();
+        await expect(await this.page.locator(this.productList)).toBeVisible();
     }
     async checkEachProductHaveAttributes(i) {
         await expect(await this.page.locator(this.productItem).nth(i)).toBeVisible();
@@ -48,6 +48,9 @@ export class ProductListPage {
         return -1
     }
     async clickOnImage(){
-        await this.page.locator(this.productImage).click();
+        await this.page.locator(this.productImage).nth(0).click();
+    }
+    async clickOnTitle(){
+        await this.page.locator(this.productTitle).nth(0).click();
     }
 }
