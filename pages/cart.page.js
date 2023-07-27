@@ -31,7 +31,7 @@ export class CartPage {
         await expect(await this.page.locator(this.continueShoppingButton)).toBeEnabled();
         await expect(await this.page.locator(this.checkoutButton)).toBeEnabled();
     }
-    async chectThatProductHasAttributes(){
+    async checkThatProductHasAttributes(){
         await expect(await this.page.locator(this.cartItem).nth(0)).toBeVisible();
         await expect(await this.page.locator(this.productPrice).nth(0)).toHaveText(/$/);
         await expect(await this.page.locator(this.productQuantity).nth(0)).toHaveText('1');
@@ -52,5 +52,8 @@ export class CartPage {
     async countAllProductsInCart(){
         const count = await page.locator(this.cartList).count();
         console.log(count)
+    }
+    async goToProductPage(){
+        await this.page.locator(this.productTitle).click();
     }
 }
