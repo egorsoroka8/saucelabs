@@ -14,10 +14,8 @@ export class ProductPage {
     productTitle = '.inventory_details_name.large_size'
     productDescription = '.inventory_details_desc.large_size'
     productPrice = '.inventory_details_price'
-    // addToCartButton = `[data-test=add-to-cart-sauce-labs-${productName}]`
-    // removeButton = `[data-test=remove-sauce-labs-${productName}]`
-    addToCartButton = `#add-to-cart-sauce-labs-backpack`
-    removeButton = `#remove-sauce-labs-backpack`
+    addToCartButton = '.btn_primary'
+    removeButton = '.btn_secondary.btn_small.btn_inventory'
 
     async pageIsLoaded() {
         await expect(await this.page.locator(this.productPage)).toBeVisible();
@@ -25,22 +23,23 @@ export class ProductPage {
     
     async chectThatProductHasAttributes() {
         await expect(await this.page.locator(this.productPrice)).toHaveText(/$/);
-        await expect(await this.page.locator(this.productDescription)).toBeVisible();
-        await expect(await this.page.locator(this.productImage)).toBeEnabled();
         await expect(await this.page.locator(this.productTitle)).toHaveText(/Sauce Labs/);
+        await expect(await this.page.locator(this.productDescription)).toBeVisible();
+        await expect(await this.page.locator(this.addToCartButton)).toBeEnabled();
+        await expect(await this.page.locator(this.productImage)).toBeEnabled();
     }
 
     async addProductToCart(){
-        await this.page.locator(this.addToCartButton).click();
-        await expect(await this.page.locator(this.removeButton)).toBeEnabled();
+        await this.page.locator(this.addToCartButton).nth(0).click();
+        await expect(await this.page.locator(this.removeButton).nth(0)).toBeEnabled();
         return 1
     }
     async removeProductFromCart(){
-        await this.page.locator(this.removeButton).click();
-        await expect(await this.page.locator(this.addToCartButton)).toBeEnabled();
+        await this.page.locator(this.removeButton).nth(0).click();
+        await expect(await this.page.locator(this.addToCartButton).nth(0)).toBeEnabled();
         return -1
     }
     async returnToListPage(){
-        await this.page.locator(this.backToProductsButton).click();
+        await this.page.locator(this.backToProductsButton).nth(0).click();
     }
 }

@@ -33,8 +33,7 @@ test('return to list page', async ({ productList, productPage }) => {
     await productList.pageIsLoaded();
 });
 
-
-test.only('add product in product page and remove in list page', async ({ productList, productPage, header }) => {
+test('add product in product page and remove in list page', async ({ productList, productPage, header }) => {
     await productList.clickOnTitle();
     await productPage.addProductToCart();
     await productPage.returnToListPage();

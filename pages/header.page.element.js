@@ -23,5 +23,6 @@ export class Header {
         await expect(await this.page.locator(this.shoppingCartProductsQtyButton)).toHaveText(cartCounter)
     }
 
+    
 
 }

@@ -20,11 +20,8 @@ export class ProductListPage {
     productTitle = '.inventory_item_name' // nth()
     productDescription = '.inventory_item_desc' // nth()
     productPrice = '.inventory_item_price' // nth()
-    // addToCartButton = `#add-to-cart-sauce-labs-${productName}`
-    // removeButton = `#remove-sauce-labs-${productName}`
-
-    addToCartButton = `#add-to-cart-sauce-labs-backpack`
-    removeButton = `#remove-sauce-labs-backpack`
+    addToCartButton = `.btn_primary.btn_inventory`
+    removeButton = `.btn_secondary.btn_inventory`
     
     async pageIsLoaded() {
         await expect(await this.page.locator(this.productList)).toBeVisible();
@@ -35,16 +32,16 @@ export class ProductListPage {
         await expect(await this.page.locator(this.productPrice).nth(i)).toHaveText(/$/);
         await expect(await this.page.locator(this.productImage).nth(i)).toBeEnabled();
         await expect(await this.page.locator(this.productTitle).nth(i)).toBeEnabled();
-        await expect(await this.page.locator(this.addToCartButton)).toBeEnabled();
+        await expect(await this.page.locator(this.addToCartButton).nth(i)).toBeEnabled();
     }
     async addProductToCart(){
-        await this.page.locator(this.addToCartButton).click();
-        await expect(await this.page.locator(this.removeButton)).toBeEnabled();
+        await this.page.locator(this.addToCartButton).nth(0).click();
+        await expect(await this.page.locator(this.removeButton).nth(0)).toBeEnabled();
         return 1
     }
     async removeProductFromCart(){
-        await this.page.locator(this.removeButton).click();
-        await expect(await this.page.locator(this.addToCartButton)).toBeEnabled();
+        await this.page.locator(this.removeButton).nth(0).click();
+        await expect(await this.page.locator(this.addToCartButton).nth(0)).toBeEnabled();
         return -1
     }
     async clickOnImage(){
