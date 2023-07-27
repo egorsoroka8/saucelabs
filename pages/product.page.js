@@ -17,5 +17,8 @@ export class ProductPage {
     addToCartButton = `[data-test=add-to-cart-sauce-labs-${productName}]`
     removeButton = `[data-test=remove-sauce-labs-${productName}]`
 
+    async pageIsLoaded() {
+        await expect(await this.page.locator(this.productPage)).toBeVisible();
+    }
     
 }

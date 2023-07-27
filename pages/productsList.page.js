@@ -47,4 +47,7 @@ export class ProductListPage {
         await expect(await this.page.locator(this.addToCartButton)).toBeEnabled();
         return -1
     }
+    async clickOnImage(){
+        await this.page.locator(this.productImage).click();
+    }
 }
