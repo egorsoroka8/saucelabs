@@ -51,6 +51,11 @@ test('try to login without username and password', async ({ loginPage }) => {
     await loginPage.verifyErrorMessageIsDisplayed(loginPageErrorMessages.usernameIsRequired);
 });
 
+test('try to close message', async ({ loginPage }) => {
+    await loginPage.submitAuthForm();
+    await loginPage.closeErrorMessage();
+});
+
 
 // Check page state before and after fill the form
 
