@@ -11,6 +11,7 @@ export class LoginPage {
     passwordInputField = '[data-test=password]'
     loginButton = '[data-test=login-button]'
     errorMessage = 'h3[data-test="error"]'
+    errorButton = '.error-button'
 
     async fillUsernameInputField(firstname){
         await this.page.locator(this.usernameInputField).type(firstname)
@@ -22,8 +23,11 @@ export class LoginPage {
         await this.page.click(this.loginButton)
     }
     async verifyErrorMessageIsDisplayed(errorText) {
-        await expect(await this.page.locator(this.usernameInputField)).toBeVisible();
         await expect(await this.page.locator(this.errorMessage)).toHaveText(errorText);
+    }
+    async closeErrorMessage(){
+        await this.page.locator(this.errorButton).click();
+        await expect(await this.page.locator(this.errorMessage)).not.toBeVisible();
     }
     async successLoginToAccount (firstname, password) {
         await this.page.locator(this.usernameInputField).type(firstname)

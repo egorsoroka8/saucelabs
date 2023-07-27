@@ -1,6 +1,6 @@
 const { test } = require('../fixture/fixture');
 const { users } = require('../test-data/user-data');
-const { loginPageErrorMessages } = require('../test-data/error-date');
+const { loginPageErrorMessages } = require('../test-data/error-data');
 
 test.beforeEach(async ({ page }) => {
     await page.goto('/');

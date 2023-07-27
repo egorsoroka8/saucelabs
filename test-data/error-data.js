@@ -5,4 +5,10 @@ const loginPageErrorMessages = {
     userIsLocked: 'Epic sadface: Sorry, this user has been locked out.',
 }
 
-module.exports = { loginPageErrorMessages };
+const checkoutPageErrorMessage = {
+    firstnameIsRequired: 'Error: First Name is required',
+    lastnameIsRequired: 'Error: Last Name is required',
+    postalCodeIsRequired: 'Error: Postal Code is required',
+}
+
+module.exports = { loginPageErrorMessages, checkoutPageErrorMessage };
