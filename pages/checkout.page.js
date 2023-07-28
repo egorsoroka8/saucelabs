@@ -14,7 +14,7 @@ export class CheckoutPage {
     postalCode = '[data-test=postalCode]'
     cancelButton = '[data-test=cancel]'
     continueButton = '[data-test=continue]'
-    errorMessage = 'data-test="error"'
+    errorMessage = '[data-test="error"]'
     errorButton = '.error-button'
 
     async pageIsLoaded(){
@@ -33,12 +33,15 @@ export class CheckoutPage {
     }
     async fillFirstNameInput(firstname){
         await this.page.locator(this.firstName).type(firstname);
+        await expect(await this.page.locator(this.firstName)).toHaveValue(firstname);
     }
     async fillLastNameInput(lastname){
         await this.page.locator(this.lastName).type(lastname);
+        await expect(await this.page.locator(this.lastName)).toHaveValue(lastname);
     }
     async fillPostalCodeInput(postalcode){
         await this.page.locator(this.postalCode).type(postalcode);
+        await expect(await this.page.locator(this.postalCode)).toHaveValue(postalcode);
     }
     async verifyErrorMessageIsDisplayed(errorText) {
         await expect(await this.page.locator(this.errorMessage)).toHaveText(errorText);
@@ -48,9 +51,14 @@ export class CheckoutPage {
         await expect(await this.page.locator(this.errorMessage)).not.toBeVisible();
     }
     async successFillCheckoutForm(firstname, lastname, postalcode){
-        await this.page.locator(this.lastName).type(firstname);
-        await this.page.locator(this.firstName).type(lastname);
+        await this.page.locator(this.firstName).type(firstname);
+        await this.page.locator(this.lastName).type(lastname);
         await this.page.locator(this.postalCode).type(postalcode);
         await this.page.locator(this.continueButton).click();
+    }
+    async checkInputValues(firstname, lastname, postalcode){
+        await expect(await this.page.locator(this.firstName)).toHaveValue(firstname);
+        await expect(await this.page.locator(this.lastName)).toHaveValue(lastname);
+        await expect(await this.page.locator(this.postalCode)).toHaveValue(postalcode);
     }
 }

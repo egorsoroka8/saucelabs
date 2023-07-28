@@ -43,14 +43,14 @@ export class OverviewPage {
         await expect(await this.page.locator(this.shippingInfo).nth(1)).toHaveText('Shipping Information');
         await expect(await this.page.locator(this.paymentInfo).nth(0)).toHaveText('Payment Information');
         await expect(await this.page.locator(this.priceTotal).nth(2)).toHaveText('Price Total');
-        await expect(await this.page.locator(this.itemPrice)).toHaveText(/Item total: $/);
-        await expect(await this.page.locator(this.totalPrice)).toHaveText(/Total: $/);
-        await expect(await this.page.locator(this.taxPrice)).toHaveText(/Tax: $/);
+        await expect(await this.page.locator(this.itemPrice)).toHaveText(/Item total: \$/);
+        await expect(await this.page.locator(this.totalPrice)).toHaveText(/Total: \$/);
+        await expect(await this.page.locator(this.taxPrice)).toHaveText(/Tax: \$/);
     }
     async checkThatProductHasAllAttributes(){
         await expect(await this.page.locator(this.productTitle).nth(0)).toBeEnabled();
         await expect(await this.page.locator(this.productDescription).nth(0)).toBeVisible();
-        await expect(await this.page.locator(this.productPrice).nth(0)).toHaveText(/$/);
+        await expect(await this.page.locator(this.productPrice).nth(0)).toContainText(/$/);
         await expect(await this.page.locator(this.productQTY).nth(0)).toHaveText('1');
     }
     async returnToCheckoutPage(){

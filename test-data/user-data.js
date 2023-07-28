@@ -11,4 +11,10 @@ const users = {
     }
 }
 
-module.exports = { users };
+const checkout = {
+    firstname: 'Georgiy',
+    lastname: 'Antonov',
+    postalCode: '123456',
+}
+
+module.exports = { users, checkout };
