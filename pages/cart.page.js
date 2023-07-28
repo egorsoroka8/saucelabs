@@ -49,12 +49,8 @@ export class CartPage {
     async goToCheckout(){
         await this.page.locator(this.checkoutButton).click();
     }
-    async countAllProductsInCart(){
-        const count = await page.locator(this.cartList).count();
-        console.log(count)
-    }
     async goToProductPage(){
-        await this.page.locator(this.productTitle).click();
+        await this.page.locator(this.productTitle).nth(0).click();
     }
     async countProducts(){
         return await this.page.locator(this.productItem).count();

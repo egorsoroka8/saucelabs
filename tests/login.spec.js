@@ -56,6 +56,8 @@ test('try to close message', async ({ loginPage }) => {
     await loginPage.closeErrorMessage();
 });
 
-
-// Check page state before and after fill the form
-
+test('login after error', async ({ loginPage }) => {
+    await loginPage.submitAuthForm();
+    await loginPage.verifyErrorMessageIsDisplayed(loginPageErrorMessages.usernameIsRequired);
+    await loginPage.successLoginToAccount(users.username.standart, users.password.valid)
+});

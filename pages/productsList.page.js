@@ -36,8 +36,8 @@ export class ProductListPage {
         await expect(await this.page.locator(this.productTitle).nth(i)).toBeEnabled();
         await expect(await this.page.locator(this.addToCartButton).nth(i)).toBeEnabled();
     }
-    async addProductToCart(){
-        await this.page.locator(this.addToCartButton).nth(0).click();
+    async addProductToCart(i){
+        await this.page.locator(this.addToCartButton).nth(i).click();
         await expect(await this.page.locator(this.removeButton).nth(0)).toBeEnabled();
     }
     async removeProductFromCart(){

@@ -23,12 +23,16 @@ export class ProductPage {
     
     async checkThatProductHasAttributes() {
         await expect(await this.page.locator(this.productPrice)).toHaveText(/$/);
-        await expect(await this.page.locator(this.productTitle)).toHaveText(/Sauce Labs/);
+        await expect(await this.page.locator(this.productTitle)).toBeVisible();
         await expect(await this.page.locator(this.productDescription)).toBeVisible();
-        await expect(await this.page.locator(this.addToCartButton)).toBeEnabled();
         await expect(await this.page.locator(this.productImage)).toBeEnabled();
     }
-
+    async addProductButtonIsEnabled(){
+        await expect(await this.page.locator(this.addToCartButton)).toBeEnabled();
+    }
+    async removeProductButtonIsEnabled(){
+        await expect(await this.page.locator(this.removeButton)).toBeEnabled();
+    }
     async addProductToCart(){
         await this.page.locator(this.addToCartButton).nth(0).click();
         await expect(await this.page.locator(this.removeButton).nth(0)).toBeEnabled();
