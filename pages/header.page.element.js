@@ -7,6 +7,8 @@ export class Header {
 
     header = '.header_label'
     burgerMenu = '#react-burger-menu-btn'
+    sidebar = '.bm-menu'
+    closeSideBarButton = '#react-burger-cross-btn'
     allItemsButton = '#inventory_sidebar_link'
     aboutButton = '#about_sidebar_link'
     logoutButton = '#logout_sidebar_link'
@@ -18,11 +20,20 @@ export class Header {
     async goToCart(){
         await this.page.locator(this.shoppingCartButton).click();
     }
-    
     async checkCounterQty(cartCounter){
         await expect(await this.page.locator(this.shoppingCartProductsQtyButton)).toHaveText(cartCounter)
     }
-
-    
-
+    async openSidebar(){
+        await this.page.locator(this.burgerMenu).click();
+        await expect(await this.page.locator(this.sidebar)).toBeVisible();
+    }
+    async closeSidebar(){
+        await this.page.locator(this.closeSideBarButton).click();
+    }
+    async logout(){
+        await this.page.locator(this.logoutButton).click();
+    }
+    async resetState(){
+        await this.page.locator(this.resetAppState).click();
+    }
 }

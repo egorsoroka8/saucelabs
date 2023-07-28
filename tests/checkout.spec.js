@@ -62,6 +62,22 @@ test('check that error message can be close', async ({ checkoutPage }) => {
     await checkoutPage.closeErrorMessage();
 });
 
+test('check that it allowed to go to overview after error', async ({
+    checkoutPage,
+    overviewPage,
+}) => {
+    await checkoutPage.goToOverview();
+    await checkoutPage.verifyErrorMessageIsDisplayed(
+        checkoutPageErrorMessage.firstnameIsRequired
+    );
+    await checkoutPage.successFillCheckoutForm(
+        checkout.firstname,
+        checkout.lastname,
+        checkout.postalCode
+    );
+    await overviewPage.pageIsLoaded();
+});
+
 test('check that checkout form store state', async ({
     cartPage,
     checkoutPage,

@@ -9,7 +9,7 @@ export class ProductListPage {
     title = '.title'
     selector = '.product_sort_container'
     selectorOptionAZ = 'option[value="az"]'
-    selectorOptionZA = 'option[value="za"]'
+    selectorOptionZA = '//option[@value="za"]'
     selectorOptionLOHI = 'option[value="lohi"]'
     selectorOptionHILO = 'option[value="hilo"]'
     
@@ -56,5 +56,18 @@ export class ProductListPage {
     async randomProduct(){
         const productQty = await this.countProducts();
         return Math.floor(Math.random() * productQty);
+    }
+    async sortProductList(option){
+        option = option.toLowerCase();
+        await this.page.locator(this.selector).selectOption(option);
+    }
+    async getProductSequanceAndNameAndPrice(i){
+        const name = await this.page.locator(this.productTitle).nth(i).textContent();
+        const price = await this.page.locator(this.productPrice).nth(i).textContent();
+        return {
+            sequance: i,
+            name: name,
+            price: price
+        }
     }
 }
