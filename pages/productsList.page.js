@@ -8,10 +8,6 @@ export class ProductListPage {
     // Sub Header
     title = '.title';
     selector = '.product_sort_container';
-    selectorOptionAZ = 'option[value="az"]';
-    selectorOptionZA = '//option[@value="za"]';
-    selectorOptionLOHI = 'option[value="lohi"]';
-    selectorOptionHILO = 'option[value="hilo"]';
 
     // Product
     productList = '.inventory_list';
@@ -98,13 +94,15 @@ export class ProductListPage {
         }
         return productsArr;
     }
-    async sortProductsByPriceLOHI(products){
-        return products.sort((a, b) => a.price - b.price);
-    }
-    async sortProductsByPriceHILO(products){
-        return products.sort((a, b) => b.price - a.price);
-    }
     async checkProductsSorting(sortedManually, sortedBySelector){
         expect(JSON.stringify(sortedManually)).toBe(JSON.stringify(sortedBySelector));
+    }
+    async sortProductsByPrice(products, method){
+        switch (method){
+            case 'hilo':
+                return products.sort((a, b) => b.price - a.price);
+            case 'lohi':
+                return products.sort((a, b) => a.price - b.price);
+        }
     }
 }
