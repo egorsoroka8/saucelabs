@@ -25,30 +25,35 @@ test('open product page by click on title', async ({ productList, productPage })
 });
 
 test('sort products by price hilo', async ({ productList }) => {
-    await productList.sortProductList('hilo');
+    await productList.selectSortMethod('hilo');
 });
 
 test('sort products by price liho', async ({ productList }) => {
-    await productList.sortProductList('lohi');
+    await productList.selectSortMethod('lohi');
 });
 
 test('sort products by name az', async ({ productList }) => {
-    await productList.sortProductList('az');
+    await productList.selectSortMethod('az');
 });
 
 test('sort products by name za', async ({ productList }) => {
-    await productList.sortProductList('za');
+    await productList.selectSortMethod('za');
 });
 
-
-
-
-test.only('test', async ({ productList }) => {
+test('check asc way sorting', async ({ productList }) => {
     const qty = await productList.countProducts();
-    const arr = [];
-    for(let i = 0; i < qty; i++){
-        const product = await productList.getProductSequanceAndNameAndPrice(i);
-        arr.push(product);
-    }
-    console.log(arr)
+    const products = await productList.getProductNameAndPrice(qty);
+    const productsSortedManually = await productList.sortProductsByPriceLOHI(products);
+    await productList.selectSortMethod('lohi');
+    const productsSortedBySelector = await productList.getProductNameAndPrice(qty);
+    await productList.checkProductsSorting(productsSortedManually, productsSortedBySelector);
+});
+
+test('check desc way sorting', async ({ productList }) => {
+    const qty = await productList.countProducts();
+    const products = await productList.getProductNameAndPrice(qty);
+    const productsSortedManually = await productList.sortProductsByPriceHILO(products);
+    await productList.selectSortMethod('hilo');
+    const productsSortedBySelector = await productList.getProductNameAndPrice(qty);
+    await productList.checkProductsSorting(productsSortedManually, productsSortedBySelector);
 });
