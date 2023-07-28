@@ -8,7 +8,7 @@ test.beforeEach(async ({ page, loginPage }) => {
 
 test('check that product page has all attributes', async ({ productList, productPage }) => {
     await productList.clickOnTitle();
-    await productPage.chectThatProductHasAttributes();
+    await productPage.checkThatProductHasAttributes();
 });
 
 test('add and remove product from cart from product page', async ({ productList, productPage, header }) => {
@@ -23,7 +23,7 @@ test('remove product from cart from product page', async ({ productList, product
     await productList.addProductToCart();
     await productList.clickOnTitle();
     await header.checkCounterQty('1');
-    await productPage.removeProductFromCart();
+    await productList.removeProductFromCart();
     await header.checkCounterQty('');
 });
 
@@ -38,14 +38,5 @@ test('add product in product page and remove in list page', async ({ productList
     await productPage.addProductToCart();
     await productPage.returnToListPage();
     await productList.removeProductFromCart();
-    await header.checkCounterQty('');
-});
-
-test('check cart counter', async ({ productList, productPage, header }) => {
-    await productList.clickOnTitle();
-    let cartCounter = 0;
-    cartCounter += await productPage.addProductToCart();
-    await header.checkCounterQty(String(cartCounter));
-    cartCounter += await productPage.removeProductFromCart();
     await header.checkCounterQty('');
 });

@@ -21,7 +21,7 @@ export class ProductPage {
         await expect(await this.page.locator(this.productPage)).toBeVisible();
     }
     
-    async chectThatProductHasAttributes() {
+    async checkThatProductHasAttributes() {
         await expect(await this.page.locator(this.productPrice)).toHaveText(/$/);
         await expect(await this.page.locator(this.productTitle)).toHaveText(/Sauce Labs/);
         await expect(await this.page.locator(this.productDescription)).toBeVisible();
@@ -32,12 +32,10 @@ export class ProductPage {
     async addProductToCart(){
         await this.page.locator(this.addToCartButton).nth(0).click();
         await expect(await this.page.locator(this.removeButton).nth(0)).toBeEnabled();
-        return 1
     }
     async removeProductFromCart(){
         await this.page.locator(this.removeButton).nth(0).click();
         await expect(await this.page.locator(this.addToCartButton).nth(0)).toBeEnabled();
-        return -1
     }
     async returnToListPage(){
         await this.page.locator(this.backToProductsButton).nth(0).click();

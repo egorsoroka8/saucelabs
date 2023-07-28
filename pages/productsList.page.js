@@ -25,6 +25,8 @@ export class ProductListPage {
     
     async pageIsLoaded() {
         await expect(await this.page.locator(this.productList)).toBeVisible();
+        await expect(await this.page.locator(this.selector)).toBeEnabled();
+        await expect(await this.page.locator(this.title)).toHaveText('Products');
     }
     async checkEachProductHaveAttributes(i) {
         await expect(await this.page.locator(this.productItem).nth(i)).toBeVisible();
@@ -37,17 +39,22 @@ export class ProductListPage {
     async addProductToCart(){
         await this.page.locator(this.addToCartButton).nth(0).click();
         await expect(await this.page.locator(this.removeButton).nth(0)).toBeEnabled();
-        return 1
     }
     async removeProductFromCart(){
         await this.page.locator(this.removeButton).nth(0).click();
         await expect(await this.page.locator(this.addToCartButton).nth(0)).toBeEnabled();
-        return -1
     }
     async clickOnImage(){
         await this.page.locator(this.productImage).nth(0).click();
     }
     async clickOnTitle(){
         await this.page.locator(this.productTitle).nth(0).click();
+    }
+    async countProducts(){
+        return await this.page.locator(this.productItem).count();
+    }
+    async randomProduct(){
+        const productQty = await this.countProducts();
+        return Math.floor(Math.random() * productQty);
     }
 }
