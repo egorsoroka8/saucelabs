@@ -26,27 +26,29 @@ export class ProductListPage {
             'Products'
         );
     }
-    async checkEachProductHaveAttributes(i) {
-        await expect(
-            await this.page.locator(this.productItem).nth(i)
-        ).toBeVisible();
-        await expect(
-            await this.page.locator(this.productDescription).nth(i)
-        ).toBeVisible();
-        await expect(
-            await this.page.locator(this.productPrice).nth(i)
-        ).toHaveText(/$/);
-        await expect(
-            await this.page.locator(this.productImage).nth(i)
-        ).toBeEnabled();
-        await expect(
-            await this.page.locator(this.productTitle).nth(i)
-        ).toBeEnabled();
-        await expect(
-            await this.page.locator(this.addToCartButton).nth(i)
-        ).toBeEnabled();
+    async checkEachProductHaveAttributes(qty) {
+        for (let i = 0; i < qty; i++) {
+            await expect(
+                await this.page.locator(this.productItem).nth(i)
+            ).toBeVisible();
+            await expect(
+                await this.page.locator(this.productDescription).nth(i)
+            ).toBeVisible();
+            await expect(
+                await this.page.locator(this.productPrice).nth(i)
+            ).toHaveText(/$/);
+            await expect(
+                await this.page.locator(this.productImage).nth(i)
+            ).toBeEnabled();
+            await expect(
+                await this.page.locator(this.productTitle).nth(i)
+            ).toBeEnabled();
+            await expect(
+                await this.page.locator(this.addToCartButton).nth(i)
+            ).toBeEnabled();
+        }
     }
-    async addProductToCart(i) {
+    async addProductToCart(i = 0) {
         await this.page.locator(this.addToCartButton).nth(i).click();
         await expect(
             await this.page.locator(this.removeButton).nth(0)
@@ -108,7 +110,6 @@ export class ProductListPage {
                 return products.sort((a, b) => a.name.localeCompare(b.name));
         }
     }
-    
     async checkProductsSorting(sortedManually, sortedBySelector){
         expect(JSON.stringify(sortedManually)).toBe(JSON.stringify(sortedBySelector));
     }

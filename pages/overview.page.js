@@ -63,10 +63,10 @@ export class OverviewPage {
         await this.page.locator(this.productTitle).nth(0).click();
     }
     async checkPaymentCard(card){
-        await expect(await this.page.locator(this.paymentValue)).toHaveText(card);
+        await expect(await this.page.locator(this.paymentValue).nth(0)).toHaveText(card);
     }
     async checkShippingCompany(company){
-        await expect(await this.page.locator(this.shippingValue)).toHaveText(company);
+        await expect(await this.page.locator(this.shippingValue).nth(1)).toHaveText(company);
     }
     async checkProductsTotalPriceWithoutTax(){
 

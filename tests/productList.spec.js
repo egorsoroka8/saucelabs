@@ -11,10 +11,8 @@ test.beforeEach(async ({ page, loginPage, productList }) => {
 });
 
 test('check that all products have attributes', async ({ productList }) => {
-    const qty = await productList.countProducts();
-    for (let i = 0; i < qty; i++) {
-        await productList.checkEachProductHaveAttributes(i);
-    }
+    const productQty = await productList.countProducts();
+    await productList.checkEachProductHaveAttributes(productQty);
 });
 
 test('open product page by click on image', async ({
