@@ -21,7 +21,7 @@ export class Header {
         await this.page.locator(this.shoppingCartButton).click();
     }
     async checkCounterQty(cartCounter){
-        await expect(await this.page.locator(this.shoppingCartProductsQtyButton)).toHaveText(cartCounter)
+        await expect(await this.page.locator(this.shoppingCartProductsQtyButton)).toHaveText(String(cartCounter));
     }
     async openSidebar(){
         await this.page.locator(this.burgerMenu).click();
@@ -31,6 +31,7 @@ export class Header {
         await this.page.locator(this.closeSideBarButton).click();
     }
     async logout(){
+        await this.openSidebar();
         await this.page.locator(this.logoutButton).click();
     }
     async resetState(){

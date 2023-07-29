@@ -54,6 +54,15 @@ export class ProductListPage {
             await this.page.locator(this.removeButton).nth(0)
         ).toBeEnabled();
     }
+    async addAllProductsToCart(qty = 0) {
+        const productArr = [];
+        for (let i = 0; i < qty; i++) {
+            await this.page.locator(this.addToCartButton).nth(0).click();
+            const product = await this.getSingleProductNameAndPrice(i);
+            productArr.push(product);
+        }
+        return productArr;
+    }
     async removeProductFromCart() {
         await this.page.locator(this.removeButton).nth(0).click();
         await expect(
@@ -96,21 +105,41 @@ export class ProductListPage {
         }
         return productsArr;
     }
-    async sortProducts(products, method){
-        switch (method){
+
+    async getSingleProductNameAndPrice(i) {
+        const name = await this.page
+            .locator(this.productTitle)
+            .nth(i)
+            .textContent();
+        let price = await this.page
+            .locator(this.productPrice)
+            .nth(i)
+            .textContent();
+        price = price.replace('$', '');
+
+        return {
+            name: name,
+            price: price,
+        }
+    }
+
+    async sortProducts(products, method) {
+        switch (method) {
             case 'az':
                 return products.sort((a, b) => a.name.localeCompare(b.name));
             case 'za':
                 return products.sort((a, b) => b.name.localeCompare(a.name));
             case 'lohi':
-                    return products.sort((a, b) => a.price - b.price);
+                return products.sort((a, b) => a.price - b.price);
             case 'hilo':
                 return products.sort((a, b) => b.price - a.price);
             default:
                 return products.sort((a, b) => a.name.localeCompare(b.name));
         }
     }
-    async checkProductsSorting(sortedManually, sortedBySelector){
-        expect(JSON.stringify(sortedManually)).toBe(JSON.stringify(sortedBySelector));
+    async checkProductsSorting(sortedManually, sortedBySelector) {
+        expect(JSON.stringify(sortedManually)).toBe(
+            JSON.stringify(sortedBySelector)
+        );
     }
 }
