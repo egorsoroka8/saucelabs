@@ -33,16 +33,13 @@ test('open product page by click on title', async ({
     await productPage.pageIsLoaded();
 });
 
-test.describe('sorting tests', () => {
+test.describe.only('sorting tests', () => {
     test('checking that default products sorting method is AZ', async ({
         productList,
     }) => {
         const qty = await productList.countProducts();
         const products = await productList.getProductNameAndPrice(qty);
-        const productsSortedManually = await productList.sortProductsByName(
-            products,
-            'az'
-        );
+        const productsSortedManually = await productList.sortProducts(products);
         await productList.checkProductsSorting(
             products,
             productsSortedManually
@@ -52,13 +49,14 @@ test.describe('sorting tests', () => {
     test('checking the sorting of products by name ASC (AZ)', async ({
         productList,
     }) => {
+        const sortingMethod = 'az';
         const qty = await productList.countProducts();
         const products = await productList.getProductNameAndPrice(qty);
-        const productsSortedManually = await productList.sortProductsByName(
+        const productsSortedManually = await productList.sortProducts(
             products,
-            'az'
+            sortingMethod
         );
-        await productList.selectSortMethod('az');
+        await productList.selectSortMethod(sortingMethod);
         const productsSortedBySelector =
             await productList.getProductNameAndPrice(qty);
         await productList.checkProductsSorting(
@@ -67,14 +65,17 @@ test.describe('sorting tests', () => {
         );
     });
 
-    test('checking the sorting of products by name DESC ()', async ({
+    test('checking the sorting of products by name DESC (ZA)', async ({
         productList,
     }) => {
+        const sortingMethod = 'za';
         const qty = await productList.countProducts();
         const products = await productList.getProductNameAndPrice(qty);
-        const productsSortedManually = 
-            await productList.sortProductsByName(products,'za');
-        await productList.selectSortMethod('za');
+        const productsSortedManually = await productList.sortProducts(
+            products,
+            sortingMethod
+        );
+        await productList.selectSortMethod(sortingMethod);
         const productsSortedBySelector =
             await productList.getProductNameAndPrice(qty);
         await productList.checkProductsSorting(
@@ -86,13 +87,14 @@ test.describe('sorting tests', () => {
     test('checking the sorting of products by price ASC (LOHI)', async ({
         productList,
     }) => {
+        const sortingMethod = 'lohi'
         const qty = await productList.countProducts();
         const products = await productList.getProductNameAndPrice(qty);
-        const productsSortedManually = await productList.sortProductsByPrice(
+        const productsSortedManually = await productList.sortProducts(
             products,
-            'lohi'
+            sortingMethod
         );
-        await productList.selectSortMethod('lohi');
+        await productList.selectSortMethod(sortingMethod);
         const productsSortedBySelector =
             await productList.getProductNameAndPrice(qty);
         await productList.checkProductsSorting(
@@ -104,11 +106,14 @@ test.describe('sorting tests', () => {
     test('checking the sorting of products by price DESC (HILO)', async ({
         productList,
     }) => {
+        const sortingMethod = 'hilo'
         const qty = await productList.countProducts();
         const products = await productList.getProductNameAndPrice(qty);
-        const productsSortedManually = 
-            await productList.sortProductsByPrice(products,'hilo');
-        await productList.selectSortMethod('hilo');
+        const productsSortedManually = await productList.sortProducts(
+            products,
+            sortingMethod
+        );
+        await productList.selectSortMethod(sortingMethod);
         const productsSortedBySelector =
             await productList.getProductNameAndPrice(qty);
         await productList.checkProductsSorting(
