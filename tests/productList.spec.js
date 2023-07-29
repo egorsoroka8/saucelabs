@@ -33,36 +33,87 @@ test('open product page by click on title', async ({
     await productPage.pageIsLoaded();
 });
 
-test('check asc way sorting', async ({ productList }) => {
-    const qty = await productList.countProducts();
-    const products = await productList.getProductNameAndPrice(qty);
-    const productsSortedManually = await productList.sortProductsByPrice(
-        products,
-        'lohi'
-    );
-    await productList.selectSortMethod('lohi');
-    const productsSortedBySelector = await productList.getProductNameAndPrice(
-        qty
-    );
-    await productList.checkProductsSorting(
-        productsSortedManually,
-        productsSortedBySelector
-    );
-});
+test.describe('sorting tests', () => {
+    test('checking that default products sorting method is AZ', async ({
+        productList,
+    }) => {
+        const qty = await productList.countProducts();
+        const products = await productList.getProductNameAndPrice(qty);
+        const productsSortedManually = await productList.sortProductsByName(
+            products,
+            'az'
+        );
+        await productList.checkProductsSorting(
+            products,
+            productsSortedManually
+        );
+    });
 
-test('check desc way sorting', async ({ productList }) => {
-    const qty = await productList.countProducts();
-    const products = await productList.getProductNameAndPrice(qty);
-    const productsSortedManually = await productList.sortProductsByPrice(
-        products,
-        'hilo'
-    );
-    await productList.selectSortMethod('hilo');
-    const productsSortedBySelector = await productList.getProductNameAndPrice(
-        qty
-    );
-    await productList.checkProductsSorting(
-        productsSortedManually,
-        productsSortedBySelector
-    );
+    test('checking the sorting of products by name ASC (AZ)', async ({
+        productList,
+    }) => {
+        const qty = await productList.countProducts();
+        const products = await productList.getProductNameAndPrice(qty);
+        const productsSortedManually = await productList.sortProductsByName(
+            products,
+            'az'
+        );
+        await productList.selectSortMethod('az');
+        const productsSortedBySelector =
+            await productList.getProductNameAndPrice(qty);
+        await productList.checkProductsSorting(
+            productsSortedManually,
+            productsSortedBySelector
+        );
+    });
+
+    test('checking the sorting of products by name DESC ()', async ({
+        productList,
+    }) => {
+        const qty = await productList.countProducts();
+        const products = await productList.getProductNameAndPrice(qty);
+        const productsSortedManually = 
+            await productList.sortProductsByName(products,'za');
+        await productList.selectSortMethod('za');
+        const productsSortedBySelector =
+            await productList.getProductNameAndPrice(qty);
+        await productList.checkProductsSorting(
+            productsSortedManually,
+            productsSortedBySelector
+        );
+    });
+
+    test('checking the sorting of products by price ASC (LOHI)', async ({
+        productList,
+    }) => {
+        const qty = await productList.countProducts();
+        const products = await productList.getProductNameAndPrice(qty);
+        const productsSortedManually = await productList.sortProductsByPrice(
+            products,
+            'lohi'
+        );
+        await productList.selectSortMethod('lohi');
+        const productsSortedBySelector =
+            await productList.getProductNameAndPrice(qty);
+        await productList.checkProductsSorting(
+            productsSortedManually,
+            productsSortedBySelector
+        );
+    });
+
+    test('checking the sorting of products by price DESC (HILO)', async ({
+        productList,
+    }) => {
+        const qty = await productList.countProducts();
+        const products = await productList.getProductNameAndPrice(qty);
+        const productsSortedManually = 
+            await productList.sortProductsByPrice(products,'hilo');
+        await productList.selectSortMethod('hilo');
+        const productsSortedBySelector =
+            await productList.getProductNameAndPrice(qty);
+        await productList.checkProductsSorting(
+            productsSortedManually,
+            productsSortedBySelector
+        );
+    });
 });

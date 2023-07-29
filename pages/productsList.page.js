@@ -94,9 +94,6 @@ export class ProductListPage {
         }
         return productsArr;
     }
-    async checkProductsSorting(sortedManually, sortedBySelector){
-        expect(JSON.stringify(sortedManually)).toBe(JSON.stringify(sortedBySelector));
-    }
     async sortProductsByPrice(products, method){
         switch (method){
             case 'hilo':
@@ -104,5 +101,16 @@ export class ProductListPage {
             case 'lohi':
                 return products.sort((a, b) => a.price - b.price);
         }
+    }
+    async sortProductsByName(products, method){
+        switch (method){
+            case 'az':
+                return products.sort((a, b) => a.name.localeCompare(b.name));
+            case 'za':
+                return products.sort((a, b) => b.name.localeCompare(a.name));
+        }
+    }
+    async checkProductsSorting(sortedManually, sortedBySelector){
+        expect(JSON.stringify(sortedManually)).toBe(JSON.stringify(sortedBySelector));
     }
 }
