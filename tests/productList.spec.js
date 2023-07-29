@@ -33,12 +33,12 @@ test('open product page by click on title', async ({
 });
 
 test.describe('sorting tests', () => {
-    
+
     test('checking that default products sorting method is AZ', async ({
         productList,
     }) => {
         const qty = await productList.countProducts();
-        const products = await productList.getProductNameAndPrice(qty);
+        const products = await productList.getNameAndPriceAll(qty);
         const productsSortedManually = await productList.sortProducts(products);
         expect(products).toStrictEqual(productsSortedManually);
     });
@@ -48,14 +48,14 @@ test.describe('sorting tests', () => {
     }) => {
         const sortingMethod = 'az';
         const qty = await productList.countProducts();
-        const products = await productList.getProductNameAndPrice(qty);
+        const products = await productList.getNameAndPriceAll(qty);
         const productsSortedManually = await productList.sortProducts(
             products,
             sortingMethod
         );
         await productList.selectSortMethod(sortingMethod);
         const productsSortedBySelector =
-            await productList.getProductNameAndPrice(qty);
+            await productList.getNameAndPriceAll(qty);
         expect(productsSortedManually).toStrictEqual(productsSortedBySelector);
 
     });
@@ -65,14 +65,14 @@ test.describe('sorting tests', () => {
     }) => {
         const sortingMethod = 'za';
         const qty = await productList.countProducts();
-        const products = await productList.getProductNameAndPrice(qty);
+        const products = await productList.getNameAndPriceAll(qty);
         const productsSortedManually = await productList.sortProducts(
             products,
             sortingMethod
         );
         await productList.selectSortMethod(sortingMethod);
         const productsSortedBySelector =
-            await productList.getProductNameAndPrice(qty);
+            await productList.getNameAndPriceAll(qty);
         expect(productsSortedManually).toStrictEqual(productsSortedBySelector);
 
     });
@@ -82,14 +82,14 @@ test.describe('sorting tests', () => {
     }) => {
         const sortingMethod = 'lohi'
         const qty = await productList.countProducts();
-        const products = await productList.getProductNameAndPrice(qty);
+        const products = await productList.getNameAndPriceAll(qty);
         const productsSortedManually = await productList.sortProducts(
             products,
             sortingMethod
         );
         await productList.selectSortMethod(sortingMethod);
         const productsSortedBySelector =
-            await productList.getProductNameAndPrice(qty);
+            await productList.getNameAndPriceAll(qty);
         expect(productsSortedManually).toStrictEqual(productsSortedBySelector);
     });
 
@@ -98,7 +98,7 @@ test.describe('sorting tests', () => {
     }) => {
         const sortingMethod = 'hilo'
         const qty = await productList.countProducts();
-        const products = await productList.getProductNameAndPrice(qty);
+        const products = await productList.getNameAndPriceAll(qty);
         const productsSortedManually = 
             await productList.sortProducts(
                 products,
@@ -106,7 +106,7 @@ test.describe('sorting tests', () => {
             );
         await productList.selectSortMethod(sortingMethod);
         const productsSortedBySelector =
-            await productList.getProductNameAndPrice(qty);
+            await productList.getNameAndPriceAll(qty);
         expect(productsSortedManually).toStrictEqual(productsSortedBySelector);
     });
 });

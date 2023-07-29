@@ -1,7 +1,9 @@
 import { expect } from '@playwright/test';
+import ProductAttributes from "../classes/general"
 
-export class ProductListPage {
+export class ProductListPage extends ProductAttributes {
     constructor(page) {
+        super();
         this.page = page;
     }
 
@@ -58,7 +60,7 @@ export class ProductListPage {
         const productArr = [];
         for (let i = 0; i < qty; i++) {
             await this.page.locator(this.addToCartButton).nth(0).click();
-            const product = await this.getSingleProductNameAndPrice(i);
+            const product = await this.getNameAndPrice(i);
             productArr.push(product);
         }
         return productArr;
@@ -84,30 +86,6 @@ export class ProductListPage {
     }
     async selectSortMethod(option) {
         await this.page.locator(this.selector).selectOption(option);
-    }
-    async getProductNameAndPrice(qty) {
-        const productsArr = [];
-        for (let i = 0; i < qty; i++) {
-            const product = await this.getSingleProductNameAndPrice(i);
-            productsArr.push(product);
-        }
-        return productsArr;
-    }
-    async getSingleProductNameAndPrice(i) {
-        const name = await this.page
-            .locator(this.productTitle)
-            .nth(i)
-            .textContent();
-        let price = await this.page
-            .locator(this.productPrice)
-            .nth(i)
-            .textContent();
-        price = price.replace('$', '');
-
-        return {
-            name: name,
-            price: price,
-        }
     }
     async sortProducts(products, method) {
         switch (method) {

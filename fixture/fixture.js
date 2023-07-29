@@ -1,11 +1,11 @@
 const base = require('@playwright/test');
+const { ProductListPage } = require('../pages/productsList.page');
+const { CheckoutPage } = require('../pages/checkout.page');
+const { OverviewPage } = require('../pages/overview.page');
+const { CompletePage } = require('../pages/complete.page');
+const { ProductPage } = require('../pages/product.page');
 const { LoginPage } = require('../pages/login.page');
 const { CartPage } = require('../pages/cart.page');
-const { CheckoutPage } = require('../pages/checkout.page');
-const { CompletePage } = require('../pages/complete.page');
-const { OverviewPage } = require('../pages/overview.page');
-const { ProductPage } = require('../pages/product.page');
-const { ProductListPage } = require('../pages/productsList.page');
 const { Header } = require('../pages/header.page.element');
 const { Footer } = require('../pages/footer.page.element');
 

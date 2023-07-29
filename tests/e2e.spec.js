@@ -1,11 +1,3 @@
-// // проверить значение counter через всё приложение
-// // проверить что после логаута, при повторном логине количество добавленных товаров в каунтер остается
-// // проверить что товар добавленный из страницы продукта, отображается в корзине
-// // проверить что товар добавленный из страницы продукта отображается как добавленный на странице всех товаров
-// // проверить что цена товара одинаковая через все приложение
-// \\ проверить что после логаута, при повторном логине добавленные товары остаются добавленными
-// // проверить что все добавленные товары передаются через все приложение
-
 const { test } = require('../fixture/fixture');
 const { users, checkout } = require('../test-data/user-data');
 const { expect } = require('@playwright/test')
@@ -86,7 +78,7 @@ test('check that all products added to cart displayed in cart and overview', asy
     const qty = await productList.countProducts();
     const productsInList = await productList.addAllProductsToCart(qty);
     await header.goToCart();
-    const productsInCart = await cartPage.getProductNameAndPrice(qty);
+    const productsInCart = await cartPage.getNameAndPriceAll(qty);
     expect(productsInList).toStrictEqual(productsInCart);
     await cartPage.goToCheckout();
     await checkoutPage.successFillCheckoutForm(
@@ -94,6 +86,6 @@ test('check that all products added to cart displayed in cart and overview', asy
         checkout.lastname,
         checkout.postalCode
     )
-    const productsInOverview = await overviewPage.getProductNameAndPrice(qty);
+    const productsInOverview = await overviewPage.getNameAndPriceAll(qty);
     expect(productsInList).toStrictEqual(productsInOverview);
 });
