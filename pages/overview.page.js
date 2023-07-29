@@ -84,5 +84,29 @@ export class OverviewPage {
         const productQty = await this.countProducts();
         return Math.floor(Math.random() * productQty);
     }
+    async getSingleProductNameAndPrice(i) {
+        const name = await this.page
+            .locator(this.productTitle)
+            .nth(i)
+            .textContent();
+        let price = await this.page
+            .locator(this.productPrice)
+            .nth(i)
+            .textContent();
+        price = price.replace('$', '');
+
+        return {
+            name: name,
+            price: price,
+        }
+    }
+    async getProductNameAndPrice(qty) {
+        const productsArr = [];
+        for (let i = 0; i < qty; i++) {
+            const product = await this.getSingleProductNameAndPrice(i);
+            productsArr.push(product);
+        }
+        return productsArr;
+    }
 }
 

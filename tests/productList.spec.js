@@ -1,5 +1,6 @@
 const { test } = require('../fixture/fixture');
 const { users } = require('../test-data/user-data');
+const { expect } = require('@playwright/test')
 
 test.beforeEach(async ({ page, loginPage, productList }) => {
     await page.goto('/');
@@ -32,16 +33,14 @@ test('open product page by click on title', async ({
 });
 
 test.describe('sorting tests', () => {
+    
     test('checking that default products sorting method is AZ', async ({
         productList,
     }) => {
         const qty = await productList.countProducts();
         const products = await productList.getProductNameAndPrice(qty);
         const productsSortedManually = await productList.sortProducts(products);
-        await productList.checkProductsSorting(
-            products,
-            productsSortedManually
-        );
+        expect(products).toStrictEqual(productsSortedManually);
     });
 
     test('checking the sorting of products by name ASC (AZ)', async ({
@@ -57,10 +56,8 @@ test.describe('sorting tests', () => {
         await productList.selectSortMethod(sortingMethod);
         const productsSortedBySelector =
             await productList.getProductNameAndPrice(qty);
-        await productList.checkProductsSorting(
-            productsSortedManually,
-            productsSortedBySelector
-        );
+        expect(productsSortedManually).toStrictEqual(productsSortedBySelector);
+
     });
 
     test('checking the sorting of products by name DESC (ZA)', async ({
@@ -76,10 +73,8 @@ test.describe('sorting tests', () => {
         await productList.selectSortMethod(sortingMethod);
         const productsSortedBySelector =
             await productList.getProductNameAndPrice(qty);
-        await productList.checkProductsSorting(
-            productsSortedManually,
-            productsSortedBySelector
-        );
+        expect(productsSortedManually).toStrictEqual(productsSortedBySelector);
+
     });
 
     test('checking the sorting of products by price ASC (LOHI)', async ({
@@ -95,10 +90,7 @@ test.describe('sorting tests', () => {
         await productList.selectSortMethod(sortingMethod);
         const productsSortedBySelector =
             await productList.getProductNameAndPrice(qty);
-        await productList.checkProductsSorting(
-            productsSortedManually,
-            productsSortedBySelector
-        );
+        expect(productsSortedManually).toStrictEqual(productsSortedBySelector);
     });
 
     test('checking the sorting of products by price DESC (HILO)', async ({
@@ -115,9 +107,6 @@ test.describe('sorting tests', () => {
         await productList.selectSortMethod(sortingMethod);
         const productsSortedBySelector =
             await productList.getProductNameAndPrice(qty);
-        await productList.checkProductsSorting(
-            productsSortedManually,
-            productsSortedBySelector
-        );
+        expect(productsSortedManually).toStrictEqual(productsSortedBySelector);
     });
 });

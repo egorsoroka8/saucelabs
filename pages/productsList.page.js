@@ -123,9 +123,8 @@ export class ProductListPage {
                 return products.sort((a, b) => a.name.localeCompare(b.name));
         }
     }
-    async checkProductsSorting(sortedManually, sortedBySelector) {
-        expect(JSON.stringify(sortedManually)).toBe(
-            JSON.stringify(sortedBySelector)
-        );
+    async checkAddedProductsQty(qty){
+        const addedProductsQty = await this.page.locator(this.removeButton).count();
+        expect(addedProductsQty).toBe(qty);
     }
 }
