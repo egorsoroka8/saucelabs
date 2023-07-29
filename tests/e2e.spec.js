@@ -60,7 +60,7 @@ test.describe('counter value tests', () => {
 });
 
 
-test.only('testing', async ({
+test('testing', async ({
     header,
     cartPage,
     productList,

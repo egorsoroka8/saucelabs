@@ -83,29 +83,16 @@ export class ProductListPage {
         return Math.floor(Math.random() * productQty);
     }
     async selectSortMethod(option) {
-        option = option.toLowerCase();
         await this.page.locator(this.selector).selectOption(option);
     }
-    async getProductNameAndPrice(productsQty) {
+    async getProductNameAndPrice(qty) {
         const productsArr = [];
-        for (let i = 0; i < productsQty; i++) {
-            const name = await this.page
-                .locator(this.productTitle)
-                .nth(i)
-                .textContent();
-            let price = await this.page
-                .locator(this.productPrice)
-                .nth(i)
-                .textContent();
-            price = price.replace('$', '');
-            productsArr.push({
-                name: name,
-                price: price,
-            });
+        for (let i = 0; i < qty; i++) {
+            const product = await this.getSingleProductNameAndPrice(i);
+            productsArr.push(product);
         }
         return productsArr;
     }
-
     async getSingleProductNameAndPrice(i) {
         const name = await this.page
             .locator(this.productTitle)
@@ -122,7 +109,6 @@ export class ProductListPage {
             price: price,
         }
     }
-
     async sortProducts(products, method) {
         switch (method) {
             case 'az':
