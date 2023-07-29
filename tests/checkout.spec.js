@@ -2,7 +2,13 @@ const { test } = require('../fixture/fixture');
 const { users, checkout } = require('../test-data/user-data');
 const { checkoutPageErrorMessage } = require('../test-data/error-data');
 
-test.beforeEach(async ({ page, header, cartPage, loginPage, checkoutPage }) => {
+test.beforeEach(async ({ 
+    page, 
+    header, 
+    cartPage, 
+    loginPage, 
+    checkoutPage 
+}) => {
     await page.goto('/');
     await loginPage.successLoginToAccount(
         users.username.standart,
@@ -79,8 +85,8 @@ test('check that it allowed to go to overview after error', async ({
 });
 
 test('check that checkout form store state', async ({
-    cartPage,
     checkoutPage,
+    cartPage,
 }) => {
     // As this functionality doesn't work - I pass in the checkInputValues empty string
     // Bug report will be created

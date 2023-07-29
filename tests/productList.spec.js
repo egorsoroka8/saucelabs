@@ -33,7 +33,7 @@ test('open product page by click on title', async ({
     await productPage.pageIsLoaded();
 });
 
-test.describe.only('sorting tests', () => {
+test.describe('sorting tests', () => {
     test('checking that default products sorting method is AZ', async ({
         productList,
     }) => {
@@ -109,10 +109,11 @@ test.describe.only('sorting tests', () => {
         const sortingMethod = 'hilo'
         const qty = await productList.countProducts();
         const products = await productList.getProductNameAndPrice(qty);
-        const productsSortedManually = await productList.sortProducts(
-            products,
-            sortingMethod
-        );
+        const productsSortedManually = 
+            await productList.sortProducts(
+                products,
+                sortingMethod
+            );
         await productList.selectSortMethod(sortingMethod);
         const productsSortedBySelector =
             await productList.getProductNameAndPrice(qty);

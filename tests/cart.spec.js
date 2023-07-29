@@ -15,9 +15,9 @@ test('open empty cart', async ({ header, cartPage }) => {
 });
 
 test('check that product in cart has all attributes', async ({
-    header,
     productList,
     cartPage,
+    header
 }) => {
     const addedProduct = await productList.randomProduct();
     await productList.addProductToCart(addedProduct);
@@ -25,7 +25,11 @@ test('check that product in cart has all attributes', async ({
     await cartPage.checkThatProductHasAttributes();
 });
 
-test('remove product from cart', async ({ header, productList, cartPage }) => {
+test('remove product from cart', async ({ 
+    productList, 
+    cartPage, 
+    header
+}) => {
     const addedProduct = await productList.randomProduct();
     await productList.addProductToCart(addedProduct);
     await header.goToCart();
@@ -33,10 +37,10 @@ test('remove product from cart', async ({ header, productList, cartPage }) => {
 });
 
 test('go to product page from cart', async ({
-    header,
     productList,
     productPage,
     cartPage,
+    header
 }) => {
     const addedProduct = await productList.randomProduct();
     await productList.addProductToCart(addedProduct);
@@ -47,17 +51,23 @@ test('go to product page from cart', async ({
 });
 
 test('return to shopping list page from cart', async ({
-    header,
     productList,
     cartPage,
+    header
 }) => {
     await header.goToCart();
     await cartPage.returnToShoppingList();
     await productList.pageIsLoaded();
 });
 
-test('go to checkout page', async ({ header, checkoutPage, cartPage }) => {
+test('go to checkout page', async ({ 
+    checkoutPage,
+    cartPage, 
+    header
+}) => {
     await header.goToCart();
     await cartPage.goToCheckout();
     await checkoutPage.pageIsLoaded();
 });
+
+// проверить что товары отображены в корзине в соответсвии с порядкой добавления
