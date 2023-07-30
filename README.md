@@ -31,34 +31,34 @@ npm test
 ## Test Directory Structure
 
 The tests are organized using the Page Object Model design pattern to enhance readability and maintainability. Here's an overview of the directory structure:
-
+tests
+├── general
+│   └── general.js
+├── fixture
+│   └── fixture.js
+├── pages
+│   ├── cart.page.js
+│   ├── checkout.page.js
+│   ├── complete.page.js
+│   ├── footer.page.element.js
+│   ├── header.page.element.js
+│   ├── login.page.js
+│   ├── overview.page.js
+│   ├── product.page.js
+│   └── productList.page.js
+├── tests-data
+│   ├── error-data.js
+│   ├── summary-data.js
+│   └── user-data.js
 └── tests
-    ├── general
-    │   └── general.js
-    ├── fixture
-    │   └── fixture.js
-    ├── pages
-    │   ├── cart.page.js
-    │   ├── checkout.page.js
-    │   ├── complete.page.js
-    │   ├── footer.page.element.js
-    │   ├── header.page.element.js
-    │   ├── login.page.js
-    │   ├── overview.page.js
-    │   ├── product.page.js
-    │   └── productList.page.js
-    ├── tests-data
-    │   ├── error-data.js
-    │   ├── summary-data.js
-    │   └── user-data.js
-    └── tests
-        ├── cart.spec.js
-        ├── checkout.spec.js
-        ├── e2e.spec.js
-        ├── login.spec.js
-        ├── overview.spec.js
-        ├── product.spec.js
-        └── productList.spec.js
+    ├── cart.spec.js
+    ├── checkout.spec.js
+    ├── e2e.spec.js
+    ├── login.spec.js
+    ├── overview.spec.js
+    ├── product.spec.js
+    └── productList.spec.js
+
 
 
 ## Continuous Integration (Optional)
