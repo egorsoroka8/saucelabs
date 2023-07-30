@@ -1,4 +1,4 @@
-# Playwright Auto Tests Portfolio for Sauce Labs Website
+# 🎭 Playwright Auto Tests Portfolio for Sauce Labs Website
 
 ## Overview
 
