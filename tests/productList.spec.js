@@ -33,6 +33,15 @@ test('open product page by click on title', async ({
 });
 
 test.describe('sorting tests', () => {
+    test('check selector', async ({
+        productList,
+    }) => {
+        const sortingMethod = 'za';
+        await productList.selectSortMethod(sortingMethod);
+        const selectedOption = await productList.getSelectorOption();
+        expect(sortingMethod).toBe(selectedOption)
+    });
+
     test('checking that default products sorting method is AZ', async ({
         productList,
     }) => {

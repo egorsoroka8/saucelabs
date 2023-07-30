@@ -11,6 +11,14 @@ test.beforeEach(async ({ page, loginPage }) => {
 });
 
 test.describe('counter value tests', () => {
+    test('check that counter value equal to quantity of added products', async ({
+        header,
+        productList,
+    }) => {
+        const qty = await productList.countProducts();
+        await productList.addAllProductsToCart(qty);
+        await header.checkCounterQty(qty);
+    });
     test('check that cart counter save value after logout -> login', async ({
         header,
         loginPage,
@@ -18,13 +26,13 @@ test.describe('counter value tests', () => {
     }) => {
         const qty = await productList.countProducts();
         await productList.addAllProductsToCart(qty);
-        await header.checkCounterQty(qty);
+        const counterValue = await header.getCounterQty();
         await header.logout();
         await loginPage.successLoginToAccount(
             users.username.standart,
             users.password.valid
-        );
-        await header.checkCounterQty(qty);
+            );
+        await header.checkCounterQty(counterValue);
     });
 
     test('check that cart counter save value throughout all pages', async ({
@@ -36,22 +44,21 @@ test.describe('counter value tests', () => {
     }) => {
         const qty = await productList.countProducts();
         await productList.addAllProductsToCart(qty);
-        await header.checkCounterQty(qty);
+        const counterValue = await header.getCounterQty();
         await header.goToCart();
-        await header.checkCounterQty(qty);
+        await header.checkCounterQty(counterValue);
         await cartPage.goToCheckout();
-        await header.checkCounterQty(qty);
+        await header.checkCounterQty(counterValue);
         await checkoutPage.successFillCheckoutForm(
             checkout.firstname,
             checkout.lastname,
             checkout.postalCode
         );
-        await header.checkCounterQty(qty);
+        await header.checkCounterQty(counterValue);
         await overviewPage.pageIsLoaded();
     });
 });
 
-// нуждается в пересмотре логики
 test('check that added to cart products stay added after logout -> login', async ({
     header,
     loginPage,

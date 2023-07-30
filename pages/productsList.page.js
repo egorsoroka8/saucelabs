@@ -1,5 +1,5 @@
 import { expect } from '@playwright/test';
-import ProductAttributes from "../classes/general"
+import ProductAttributes from '../classes/general';
 
 export class ProductListPage extends ProductAttributes {
     constructor(page) {
@@ -24,37 +24,22 @@ export class ProductListPage extends ProductAttributes {
     async pageIsLoaded() {
         await expect(await this.page.locator(this.productList)).toBeVisible();
         await expect(await this.page.locator(this.selector)).toBeEnabled();
-        await expect(await this.page.locator(this.title)).toHaveText(
-            'Products'
-        );
+        await expect(await this.page.locator(this.title)).toHaveText('Products');
     }
     async checkEachProductHaveAttributes(qty) {
         for (let i = 0; i < qty; i++) {
-            await expect(
-                await this.page.locator(this.productItem).nth(i)
-            ).toBeVisible();
-            await expect(
-                await this.page.locator(this.productDescription).nth(i)
-            ).toBeVisible();
-            await expect(
-                await this.page.locator(this.productPrice).nth(i)
-            ).toHaveText(/$/);
-            await expect(
-                await this.page.locator(this.productImage).nth(i)
-            ).toBeEnabled();
-            await expect(
-                await this.page.locator(this.productTitle).nth(i)
-            ).toBeEnabled();
-            await expect(
-                await this.page.locator(this.addToCartButton).nth(i)
-            ).toBeEnabled();
+            await expect(await this.page.locator(this.productItem).nth(i)).toBeVisible();
+            await expect(await this.page.locator(this.productDescription).nth(i)).toBeVisible();
+            await expect(await this.page.locator(this.productPrice).nth(i)).toHaveText(/$/);
+            await expect(await this.page.locator(this.productImage).nth(i)).toBeEnabled();
+            await expect(await this.page.locator(this.productTitle).nth(i)).toBeEnabled();
+            await expect(await this.page.locator(this.productTitle).nth(i)).toHaveText(/Sauce Labs/);
+            await expect(await this.page.locator(this.addToCartButton).nth(i)).toBeEnabled();
         }
     }
     async addProductToCart(i = 0) {
         await this.page.locator(this.addToCartButton).nth(i).click();
-        await expect(
-            await this.page.locator(this.removeButton).nth(0)
-        ).toBeEnabled();
+        await expect(await this.page.locator(this.removeButton).nth(0)).toBeEnabled();
     }
     async addAllProductsToCart(qty = 0) {
         const productArr = [];
@@ -67,9 +52,7 @@ export class ProductListPage extends ProductAttributes {
     }
     async removeProductFromCart() {
         await this.page.locator(this.removeButton).nth(0).click();
-        await expect(
-            await this.page.locator(this.addToCartButton).nth(0)
-        ).toBeEnabled();
+        await expect(await this.page.locator(this.addToCartButton).nth(0)).toBeEnabled();
     }
     async clickOnImage() {
         await this.page.locator(this.productImage).nth(0).click();
@@ -79,6 +62,9 @@ export class ProductListPage extends ProductAttributes {
     }
     async selectSortMethod(option) {
         await this.page.locator(this.selector).selectOption(option);
+    }
+    async getSelectorOption(){
+        return await this.page.locator(this.selector).inputValue();
     }
     async sortProducts(products, method) {
         switch (method) {
@@ -94,7 +80,7 @@ export class ProductListPage extends ProductAttributes {
                 return products.sort((a, b) => a.name.localeCompare(b.name));
         }
     }
-    async checkAddedProductsQty(qty){
+    async checkAddedProductsQty(qty) {
         const addedProductsQty = await this.page.locator(this.removeButton).count();
         expect(addedProductsQty).toBe(qty);
     }

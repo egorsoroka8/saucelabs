@@ -54,11 +54,4 @@ export class CartPage extends ProductAttributes {
     async goToProductPage() {
         await this.page.locator(this.productTitle).nth(0).click();
     }
-    async countProducts() {
-        return await this.page.locator(this.productItem).count();
-    }
-    async randomProduct() {
-        const productQty = await this.countProducts();
-        return Math.floor(Math.random() * productQty);
-    }
 }

@@ -23,6 +23,9 @@ export class Header {
     async checkCounterQty(cartCounter) {
         await expect(await this.page.locator(this.shoppingCartProductsQtyButton)).toHaveText(String(cartCounter));
     }
+    async getCounterQty(){
+        return await this.page.locator(this.shoppingCartProductsQtyButton).textContent();
+    }
     async openSidebar() {
         await this.page.locator(this.burgerMenu).click();
         await expect(await this.page.locator(this.sidebar)).toBeVisible();
