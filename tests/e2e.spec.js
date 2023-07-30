@@ -13,9 +13,9 @@ test.beforeEach(async ({ page, loginPage }) => {
 test.describe('counter value tests', () => {
 
     test('check that cart counter save value after logout -> login', async ({
-        productList,
         header,
         loginPage,
+        productList,
     }) => {
         const qty = await productList.countProducts();
         await productList.addAllProductsToCart(qty);
@@ -53,7 +53,7 @@ test.describe('counter value tests', () => {
 });
 
 // нуждается в пересмотре логики
-test('check that added to cart products added after logout -> login', async ({
+test('check that added to cart products stay added after logout -> login', async ({
     header,
     loginPage,
     productList,
@@ -88,4 +88,25 @@ test('check that all products added to cart displayed in cart and overview', asy
     )
     const productsInOverview = await overviewPage.getNameAndPriceAll(qty);
     expect(productsInList).toStrictEqual(productsInOverview);
+});
+
+test('check that all prices on page counted properly', async ({
+    header,
+    cartPage,
+    productList,
+    checkoutPage,
+    overviewPage,
+}) => {
+    const qty = await productList.countProducts();
+    await productList.addAllProductsToCart(qty);
+    await header.goToCart();
+    await cartPage.goToCheckout();
+    await checkoutPage.successFillCheckoutForm(
+        checkout.firstname,
+        checkout.lastname,
+        checkout.postalCode
+    )
+    const priceOnPage = await overviewPage.getProductsPrice();    
+    const countedPrices = await overviewPage.countProductsPrice(qty);
+    expect(countedPrices).toStrictEqual(priceOnPage);
 });

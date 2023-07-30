@@ -1,13 +1,3 @@
-/*
-    проверить удаление товара из чекаут
-        1. добавить товары
-        2. дойти до чекаут
-        3. зайти на карточку товара
-        4. удалить товар
-        5. перейти на страницу чекаут (через ссылку)
-        6. проверить что товар удален
-*/
-
 const { test } = require('../fixture/fixture');
 const { users, checkout } = require('../test-data/user-data');
 const { shippingData } = require('../test-data/summary-data');
