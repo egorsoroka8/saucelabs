@@ -1,16 +1,10 @@
-# Saucelabs Playwright Tests
-
-### Command to run tests : 'npm test'
-
-### Test cases list : [Link](https://docs.google.com/spreadsheets/d/1vs6KSUmPfyK0fu7_9oqWkiXgbCE1V9HeJe7JC3Cjuiw/edit?usp=sharing)
-
-# Playwright Auto Tests Portfolio for Sauce Labs Website
-
 # Playwright Auto Tests Portfolio for Sauce Labs Website
 
 ## Overview
 
 This repository contains an automated test portfolio using Playwright, written in JavaScript, to test the Sauce Labs website using the Page Object Model (POM) design pattern. The tests aim to ensure the functionality and user experience of the Sauce Labs website are consistent and robust.
+
+### Test cases list : [Link](https://docs.google.com/spreadsheets/d/1vs6KSUmPfyK0fu7_9oqWkiXgbCE1V9HeJe7JC3Cjuiw/edit?usp=sharing)
 
 ## Installation
 
