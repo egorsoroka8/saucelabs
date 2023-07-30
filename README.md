@@ -33,7 +33,7 @@ npm test
 The tests are organized using the Page Object Model design pattern to enhance readability and maintainability. Here's an overview of the directory structure:
 ```
 tests
-├── general
+├── classes
 │   └── general.js
 ├── fixture
 │   └── fixture.js
