@@ -77,13 +77,6 @@ export class ProductListPage extends ProductAttributes {
     async clickOnTitle() {
         await this.page.locator(this.productTitle).nth(0).click();
     }
-    async countProducts() {
-        return await this.page.locator(this.productItem).count();
-    }
-    async randomProduct() {
-        const productQty = await this.countProducts();
-        return Math.floor(Math.random() * productQty);
-    }
     async selectSortMethod(option) {
         await this.page.locator(this.selector).selectOption(option);
     }

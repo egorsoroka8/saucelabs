@@ -37,47 +37,23 @@ export class OverviewPage extends ProductAttributes {
     async pageIsLoaded() {
         await expect(await this.page.locator(this.title)).toBeVisible();
         await expect(await this.page.locator(this.cartQTY)).toBeVisible();
-        await expect(
-            await this.page.locator(this.checkoutSummary)
-        ).toBeVisible();
-        await expect(
-            await this.page.locator(this.cartDescription)
-        ).toBeVisible();
+        await expect(await this.page.locator(this.checkoutSummary)).toBeVisible();
+        await expect(await this.page.locator(this.cartDescription)).toBeVisible();
         await expect(await this.page.locator(this.cancelButton)).toBeEnabled();
         await expect(await this.page.locator(this.finishButton)).toBeEnabled();
 
-        await expect(
-            await this.page.locator(this.shippingInfo).nth(1)
-        ).toHaveText('Shipping Information');
-        await expect(
-            await this.page.locator(this.paymentInfo).nth(0)
-        ).toHaveText('Payment Information');
-        await expect(
-            await this.page.locator(this.priceTotal).nth(2)
-        ).toHaveText('Price Total');
-        await expect(await this.page.locator(this.itemPrice)).toHaveText(
-            /Item total: \$/
-        );
-        await expect(await this.page.locator(this.totalPrice)).toHaveText(
-            /Total: \$/
-        );
-        await expect(await this.page.locator(this.taxPrice)).toHaveText(
-            /Tax: \$/
-        );
+        await expect(await this.page.locator(this.shippingInfo).nth(1)).toHaveText('Shipping Information');
+        await expect(await this.page.locator(this.paymentInfo).nth(0)).toHaveText('Payment Information');
+        await expect(await this.page.locator(this.priceTotal).nth(2)).toHaveText('Price Total');
+        await expect(await this.page.locator(this.itemPrice)).toHaveText(/Item total: \$/);
+        await expect(await this.page.locator(this.totalPrice)).toHaveText(/Total: \$/);
+        await expect(await this.page.locator(this.taxPrice)).toHaveText(/Tax: \$/);
     }
     async checkThatProductHasAllAttributes() {
-        await expect(
-            await this.page.locator(this.productTitle).nth(0)
-        ).toBeEnabled();
-        await expect(
-            await this.page.locator(this.productDescription).nth(0)
-        ).toBeVisible();
-        await expect(
-            await this.page.locator(this.productPrice).nth(0)
-        ).toContainText(/$/);
-        await expect(
-            await this.page.locator(this.productQTY).nth(0)
-        ).toHaveText('1');
+        await expect(await this.page.locator(this.productTitle).nth(0)).toBeEnabled();
+        await expect(await this.page.locator(this.productDescription).nth(0)).toBeVisible();
+        await expect(await this.page.locator(this.productPrice).nth(0)).toContainText(/$/);
+        await expect(await this.page.locator(this.productQTY).nth(0)).toHaveText('1');
     }
     async returnToCheckoutPage() {
         await this.page.locator(this.cancelButton).click();
@@ -89,21 +65,10 @@ export class OverviewPage extends ProductAttributes {
         await this.page.locator(this.productTitle).nth(0).click();
     }
     async checkPaymentCard(card) {
-        await expect(
-            await this.page.locator(this.paymentValue).nth(0)
-        ).toHaveText(card);
+        await expect(await this.page.locator(this.paymentValue).nth(0)).toHaveText(card);
     }
     async checkShippingCompany(company) {
-        await expect(
-            await this.page.locator(this.shippingValue).nth(1)
-        ).toHaveText(company);
-    }
-    async countProducts() {
-        return await this.page.locator(this.productItem).count();
-    }
-    async randomProduct() {
-        const productQty = await this.countProducts();
-        return Math.floor(Math.random() * productQty);
+        await expect(await this.page.locator(this.shippingValue).nth(1)).toHaveText(company);
     }
     async countProductsPrice(qty) {
         const products = await this.getNameAndPriceAll(qty);
@@ -129,7 +94,7 @@ export class OverviewPage extends ProductAttributes {
         for (const [priceType, priceLocator] of Object.entries(priceLocators)) {
             const priceContent = await this.page.locator(priceLocator).textContent();
             const currencyIndex = priceContent.indexOf('$');
-            const priceValue =  Number(priceContent.slice(currencyIndex + 1));
+            const priceValue = Number(priceContent.slice(currencyIndex + 1));
             prices[priceType] = priceValue;
         }
         return prices;

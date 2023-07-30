@@ -1,6 +1,6 @@
 const { test } = require('../fixture/fixture');
 const { users, checkout } = require('../test-data/user-data');
-const { expect } = require('@playwright/test')
+const { expect } = require('@playwright/test');
 
 test.beforeEach(async ({ page, loginPage }) => {
     await page.goto('/');
@@ -11,7 +11,6 @@ test.beforeEach(async ({ page, loginPage }) => {
 });
 
 test.describe('counter value tests', () => {
-
     test('check that cart counter save value after logout -> login', async ({
         header,
         loginPage,
@@ -85,12 +84,12 @@ test('check that all products added to cart displayed in cart and overview', asy
         checkout.firstname,
         checkout.lastname,
         checkout.postalCode
-    )
+    );
     const productsInOverview = await overviewPage.getNameAndPriceAll(qty);
     expect(productsInList).toStrictEqual(productsInOverview);
 });
 
-test('check that all prices on page counted properly', async ({
+test('check that all prices on overview page counted properly', async ({
     header,
     cartPage,
     productList,
@@ -105,8 +104,8 @@ test('check that all prices on page counted properly', async ({
         checkout.firstname,
         checkout.lastname,
         checkout.postalCode
-    )
-    const priceOnPage = await overviewPage.getProductsPrice();    
+    );
+    const priceOnPage = await overviewPage.getProductsPrice();
     const countedPrices = await overviewPage.countProductsPrice(qty);
     expect(countedPrices).toStrictEqual(priceOnPage);
 });

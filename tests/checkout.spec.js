@@ -2,13 +2,7 @@ const { test } = require('../fixture/fixture');
 const { users, checkout } = require('../test-data/user-data');
 const { checkoutPageErrorMessage } = require('../test-data/error-data');
 
-test.beforeEach(async ({ 
-    page, 
-    header, 
-    cartPage, 
-    loginPage, 
-    checkoutPage 
-}) => {
+test.beforeEach(async ({ page, header, cartPage, loginPage, checkoutPage }) => {
     await page.goto('/');
     await loginPage.successLoginToAccount(
         users.username.standart,

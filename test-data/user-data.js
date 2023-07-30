@@ -5,16 +5,16 @@ const users = {
         problem: 'problem_user',
         wrong: 'user_standart',
     },
-    password : {
+    password: {
         valid: 'secret_sauce',
         wrong: 'sauce_secret',
-    }
-}
+    },
+};
 
 const checkout = {
     firstname: 'Georgiy',
     lastname: 'Antonov',
     postalCode: '123456',
-}
+};
 
 module.exports = { users, checkout };
