@@ -82,8 +82,6 @@ test('check that checkout form store state', async ({
     checkoutPage,
     cartPage,
 }) => {
-    // As this functionality doesn't work - I pass in the checkInputValues empty string
-    // Bug report will be created
     await checkoutPage.fillFirstNameInput(checkout.firstname);
     await checkoutPage.fillLastNameInput(checkout.lastname);
     await checkoutPage.fillPostalCodeInput(checkout.postalCode);

@@ -32,8 +32,8 @@ test('open product page by click on title', async ({
     await productPage.pageIsLoaded();
 });
 
-test.describe.only('sorting tests', () => {
-    test('check selector', async ({
+test.describe('sorting tests', () => {
+    test('check sorting selector', async ({
         productList,
     }) => {
         const sortingMethod = 'za';

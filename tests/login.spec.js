@@ -63,7 +63,7 @@ test('try to login without username and password', async ({ loginPage }) => {
     );
 });
 
-test('try to close message', async ({ loginPage }) => {
+test('try to close error message', async ({ loginPage }) => {
     await loginPage.submitAuthForm();
     await loginPage.closeErrorMessage();
 });
