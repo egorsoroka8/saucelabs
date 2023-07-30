@@ -63,7 +63,7 @@ export class ProductListPage extends ProductAttributes {
     async selectSortMethod(option) {
         await this.page.locator(this.selector).selectOption(option);
     }
-    async getSelectorOption(){
+    async getSelectorOption() {
         return await this.page.locator(this.selector).inputValue();
     }
     async sortProducts(products, method) {
@@ -83,5 +83,13 @@ export class ProductListPage extends ProductAttributes {
     async checkAddedProductsQty(qty) {
         const addedProductsQty = await this.page.locator(this.removeButton).count();
         expect(addedProductsQty).toBe(qty);
+    }
+    async checkSorting(sortingMethod) {
+        const productsQtyOnPage = await this.countProducts();
+        const defaultSorting = await this.getNameAndPriceAll(productsQtyOnPage);
+        const sortingManually = await this.sortProducts(defaultSorting, sortingMethod);
+        await this.selectSortMethod(sortingMethod);
+        const sortingBySelector = await this.getNameAndPriceAll(productsQtyOnPage);
+        expect(sortingManually).toStrictEqual(sortingBySelector);
     }
 }
