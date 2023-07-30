@@ -31,6 +31,7 @@ npm test
 ## Test Directory Structure
 
 The tests are organized using the Page Object Model design pattern to enhance readability and maintainability. Here's an overview of the directory structure:
+```
 tests
 ├── general
 │   └── general.js
@@ -58,7 +59,7 @@ tests
     ├── overview.spec.js
     ├── product.spec.js
     └── productList.spec.js
-
+```
 
 
 ## Continuous Integration (Optional)
