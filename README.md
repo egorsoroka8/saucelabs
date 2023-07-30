@@ -40,12 +40,12 @@ The tests are organized using the Page Object Model design pattern to enhance re
     ├── pages
     │   ├── cart.page.js
     │   ├── checkout.page.js
-    |   ├── complete.page.js
-    |   ├── footer.page.element.js
-    |   ├── header.page.element.js
-    |   ├── login.page.js
-    |   ├── overview.page.js
-    |   ├── product.page.js
+    │   ├── complete.page.js
+    │   ├── footer.page.element.js
+    │   ├── header.page.element.js
+    │   ├── login.page.js
+    │   ├── overview.page.js
+    │   ├── product.page.js
     │   └── productList.page.js
     ├── tests-data
     │   ├── error-data.js
@@ -59,6 +59,7 @@ The tests are organized using the Page Object Model design pattern to enhance re
         ├── overview.spec.js
         ├── product.spec.js
         └── productList.spec.js
+
 
 ## Continuous Integration (Optional)
 
