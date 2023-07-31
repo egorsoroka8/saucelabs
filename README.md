@@ -14,6 +14,9 @@ This repository contains an automated test portfolio using Playwright, written i
 
 ```bash
 npm install
+```
+4. Install browsers by running the following command:
+```bash
 npx playwright install
 ```
 
