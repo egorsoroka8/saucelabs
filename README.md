@@ -14,6 +14,7 @@ This repository contains an automated test portfolio using Playwright, written i
 
 ```bash
 npm install
+npx playwright install
 ```
 
 ## Configuration
