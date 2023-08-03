@@ -28,8 +28,14 @@ You can change configuration in playwright.config.js
 
 To execute the test cases against the Sauce Labs website, simply run the following command:
 
+check tests on correct web-site :
 ```bash
-npm test
+npm run success
+```
+
+check tests on broken web-site :
+```bash
+npm run success
 ```
 
 ## Test Directory Structure

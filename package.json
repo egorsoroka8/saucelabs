@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test_success": "cross-env USER=success npx playwright test",
-    "test_failed": "cross-env USER=failed npx playwright test"
+    "success": "cross-env USER=success npx playwright test",
+    "fail": "cross-env USER=failed npx playwright test"
   },
   "keywords": [],
   "author": "",
