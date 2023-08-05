@@ -35,7 +35,7 @@ npm run success
 
 check tests on broken web-site :
 ```bash
-npm run success
+npm run fail
 ```
 
 ## Test Directory Structure
