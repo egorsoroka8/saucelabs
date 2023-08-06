@@ -1,6 +1,5 @@
 // @ts-check
 const { defineConfig, devices } = require('@playwright/test');
-const { allure } = require('allure-playwright');
 
 /**
  * Read environment variables from file.
@@ -22,14 +21,9 @@ module.exports = defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [
-    ['html'],
-    ['dot'],
-    ['list'],
-    ['allure-playwright']
-  ],
+  reporter: 'html',
   // Each test is given 30 seconds.
-  timeout: 15000,
+  timeout: 10000,
 
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
