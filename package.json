@@ -1,17 +1,24 @@
 {
   "name": "saucelabs",
   "version": "1.0.0",
-  "description": "",
+  "description": "E2E tests for SauceLabs Website",
   "main": "index.js",
   "scripts": {
-    "success": "cross-env USER=success npx playwright test",
-    "fail": "cross-env USER=failed npx playwright test"
+    "test:success": "cross-env USER=success npx playwright test",
+    "test:fail": "cross-env USER=failed npx playwright test",
+    "allure:generate": "npx allure generate ./allure-results --clean",
+    "allure:open": "npx allure open ./allure-report",
+    "allure:serve": "npx allure serve"
   },
   "keywords": [],
-  "author": "",
+  "author": "Egor Sorokin",
   "license": "ISC",
   "dependencies": {
-    "@playwright/test": "^1.36.2",
     "cross-env": "^7.0.3"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.36.2",
+    "allure-commandline": "^2.23.1",
+    "allure-playwright": "^2.5.0"
   }
 }
