@@ -30,12 +30,25 @@ To execute the test cases against the Sauce Labs website, simply run the followi
 
 check tests on correct web-site :
 ```bash
-npm run success
+npm run test:success
 ```
 
 check tests on broken web-site :
 ```bash
-npm run fail
+npm run test:fail
+```
+
+## Running the Tests
+
+To generate Allure report run:
+
+```bash
+npm run allure:generate
+```
+
+For report opening :
+```bash
+npm run allure:open
 ```
 
 ## Test Directory Structure
