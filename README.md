@@ -43,12 +43,7 @@ npm run test:fail
 To generate Allure report run:
 
 ```bash
-npm run allure:generate
-```
-
-For report opening :
-```bash
-npm run allure:open
+npm run allure-report
 ```
 
 ## Test Directory Structure
