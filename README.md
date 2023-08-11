@@ -47,6 +47,9 @@ npm run allure-report
 ```
 
 ![](https://github.com/egorsoroka8/content/raw/main/allure.gif)
+![Alt Text](https://github.com/egorsoroka8/content/raw/main/allure.gif)
+
+
 
 ## Test Directory Structure
 
