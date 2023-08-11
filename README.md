@@ -46,6 +46,8 @@ To generate Allure report run:
 npm run allure-report
 ```
 
+![](https://github.com/egorsoroka8/content/allure.gif)
+
 ## Test Directory Structure
 
 The tests are organized using the Page Object Model design pattern to enhance readability and maintainability. Here's an overview of the directory structure:
