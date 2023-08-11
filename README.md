@@ -46,8 +46,9 @@ To generate Allure report run:
 npm run allure-report
 ```
 
-![](https://github.com/egorsoroka8/content/raw/main/allure.gif)
-
+<p align="center">
+  <img src="https://github.com/egorsoroka8/content/raw/main/allure.gif" alt="Your GIF" />
+</p>
 
 ## Test Directory Structure
 
