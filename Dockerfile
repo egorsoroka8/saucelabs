@@ -6,8 +6,11 @@ COPY package*.json ./
 
 RUN npm ci
 
-#Install chrome on Docker container
-RUN npx playwright install chrome
+#Install browsers on Docker container
+RUN npx playwright install
+
+#Install Java for allure report generations
+RUN apt-get update && apt-get install -y openjdk-11-jre-headless
 
 COPY . .
 
