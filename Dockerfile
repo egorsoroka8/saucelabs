@@ -9,7 +9,7 @@ RUN npm ci
 #Install browsers on Docker container
 RUN npx playwright install
 
-#Install Java for allure report generations
+#Install Java for allure report generation
 RUN apt-get update && apt-get install -y openjdk-11-jre-headless
 
 COPY . .

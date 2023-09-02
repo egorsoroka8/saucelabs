@@ -7,8 +7,8 @@
         "test:success": "cross-env USER=success npx playwright test",
         "test:fail": "cross-env USER=failed npx playwright test",
         "allure:generate": "npx allure generate ./allure-results --clean --history",
-        "allure:open": "npx allure open ./allure-report",
-        "allure:serve": "npx allure serve",
+        "allure:open": "npx allure open -p 3030 ./allure-report",
+        "allure:serve": "npx allure serve -p 3030",
         "allure:copy": "if [ -d ./allure-report/history/ ]; then mkdir -p ./allure-results/history && cp ./allure-report/history/* ./allure-results/history; fi",
         "allure-report": "npm run allure:copy && npm run allure:generate && npm run allure:open"
     },

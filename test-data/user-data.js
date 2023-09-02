@@ -1,6 +1,5 @@
 const users = {
     username: {
-        // standart: 'standard_user',  // ? 'standard_user' : 'problem_user'
         locked: 'locked_out_user',
         problem: 'problem_user',
         wrong: 'user_standart',
