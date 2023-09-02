@@ -46,6 +46,15 @@ To generate Allure report run:
 npm run allure-report
 ```
 
+
+
+<div align="center">
+  <img src="https://github.com/egorsoroka8/content/raw/main/allure.gif" alt="Your GIF" />
+</div>
+
+
+
+
 ## Test Directory Structure
 
 The tests are organized using the Page Object Model design pattern to enhance readability and maintainability. Here's an overview of the directory structure:

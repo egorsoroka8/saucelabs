@@ -9,7 +9,7 @@
         "allure:generate": "npx allure generate ./allure-results --clean --history",
         "allure:open": "npx allure open ./allure-report",
         "allure:serve": "npx allure serve",
-        "allure:copy": "cp ./allure-report/history/* ./allure-results/history",
+        "allure:copy": "if [ -d ./allure-report/history/ ]; then cp ./allure-report/history/* ./allure-results/history; fi",
         "allure-report": "npm run allure:copy && npm run allure:generate && npm run allure:open"
     },
     "keywords": [],
