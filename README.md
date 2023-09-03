@@ -102,7 +102,6 @@ Happy testing!
 ## Test cases list
 <details>
 <summary>Open List</summary>
-
   
 | Number | Test                                                                 | Page     |
 | ------ | -------------------------------------------------------------------- | -------- |
