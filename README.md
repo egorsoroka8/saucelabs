@@ -102,7 +102,8 @@ Happy testing!
 ## Test cases list
 <details>
 <summary>Open List</summary>
-</br>
+
+  
 | Number | Test                                                                 | Page     |
 | ------ | -------------------------------------------------------------------- | -------- |
 | 1      | Success login into account                                           | Login    |
