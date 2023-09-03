@@ -99,6 +99,7 @@ Feel free to contribute to this test portfolio by opening pull requests or repor
 
 Happy testing!
 
+<details>
 ## Test cases list
 
 | Number | Test                                                                 | Page     |
@@ -150,3 +151,4 @@ Happy testing!
 | 45     | Check that added to cart products stay added after logout -> login   | E2E      |
 | 46     | Check that all products added to cart displayed in cart and overview | E2E      |
 | 47     | Check that all prices on overview page counted properl               | E2E      |
+</details>
