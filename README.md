@@ -59,6 +59,45 @@ This repository contains an automated test portfolio using Playwright, written i
 | 47     | Check that all prices on overview page counted properl               | E2E      |
 </details>
 
+## Test Directory Structure
+  
+### The tests are organized using the Page Object Model design pattern to enhance readability and maintainability. Here's an overview of the directory structure:
+
+<details>
+<summary>Show structure</summary>
+
+
+```
+tests
+├── classes
+│   └── general.js
+├── fixture
+│   └── fixture.js
+├── pages
+│   ├── cart.page.js
+│   ├── checkout.page.js
+│   ├── complete.page.js
+│   ├── footer.page.element.js
+│   ├── header.page.element.js
+│   ├── login.page.js
+│   ├── overview.page.js
+│   ├── product.page.js
+│   └── productList.page.js
+├── tests-data
+│   ├── error-data.js
+│   ├── summary-data.js
+│   └── user-data.js
+└── tests
+    ├── cart.spec.js
+    ├── checkout.spec.js
+    ├── e2e.spec.js
+    ├── login.spec.js
+    ├── overview.spec.js
+    ├── product.spec.js
+    └── productList.spec.js
+```
+</details>
+
 
 ## Installation
 
@@ -106,47 +145,6 @@ npm run allure-report
   <img src="https://github.com/egorsoroka8/content/raw/main/allure.gif" alt="Your GIF" />
 </div>
 
-
-
-
-## Test Directory Structure
-  
-### The tests are organized using the Page Object Model design pattern to enhance readability and maintainability. Here's an overview of the directory structure:
-
-<details>
-<summary>Show structure</summary>
-
-
-```
-tests
-├── classes
-│   └── general.js
-├── fixture
-│   └── fixture.js
-├── pages
-│   ├── cart.page.js
-│   ├── checkout.page.js
-│   ├── complete.page.js
-│   ├── footer.page.element.js
-│   ├── header.page.element.js
-│   ├── login.page.js
-│   ├── overview.page.js
-│   ├── product.page.js
-│   └── productList.page.js
-├── tests-data
-│   ├── error-data.js
-│   ├── summary-data.js
-│   └── user-data.js
-└── tests
-    ├── cart.spec.js
-    ├── checkout.spec.js
-    ├── e2e.spec.js
-    ├── login.spec.js
-    ├── overview.spec.js
-    ├── product.spec.js
-    └── productList.spec.js
-```
-</details>
 
 ## Continuous Integration (Optional)
 
