@@ -99,8 +99,9 @@ Feel free to contribute to this test portfolio by opening pull requests or repor
 
 Happy testing!
 
-<details>
 ## Test cases list
+<details>
+<summary>Open List</summary>
 
 | Number | Test                                                                 | Page     |
 | ------ | -------------------------------------------------------------------- | -------- |
