@@ -6,7 +6,7 @@ This repository contains an automated test portfolio using Playwright, written i
 
 ## Test cases list
 <details>
-<summary>Open List</summary>
+<summary>Show List</summary>
   
 | Number | Test                                                                 | Page     |
 | ------ | -------------------------------------------------------------------- | -------- |
@@ -112,6 +112,8 @@ npm run allure-report
 ## Test Directory Structure
 
 <details>
+
+<summary>Show structure</summary>
   
 ### The tests are organized using the Page Object Model design pattern to enhance readability and maintainability. Here's an overview of the directory structure:
 
