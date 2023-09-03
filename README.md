@@ -112,7 +112,9 @@ npm run allure-report
 ## Test Directory Structure
 
 <details>
+  
 ### The tests are organized using the Page Object Model design pattern to enhance readability and maintainability. Here's an overview of the directory structure:
+
 ```
 tests
 ├── classes
