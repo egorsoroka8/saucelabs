@@ -99,6 +99,7 @@ Feel free to contribute to this test portfolio by opening pull requests or repor
 
 Happy testing!
 
+## Test cases list
 
 | Number | Test                                                                 | Page     |
 | ------ | -------------------------------------------------------------------- | -------- |
