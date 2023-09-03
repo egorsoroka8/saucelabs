@@ -103,14 +103,14 @@ Happy testing!
 | Page                                                                 | Test                                                         | Number |
 | -------------------------------------------------------------------- | ------------------------------------------------------------ | ------ |
 | Login                                                                | Success login into account                                   | 1      |
-| Try to login with locked user                                        | 2                                                            |
-| Try to login with incorrect username                                 | 3                                                            |
-| Try to login with incorrect password                                 | 4                                                            |
-| Try to login with without username                                   | 5                                                            |
-| Try to login with without password                                   | 6                                                            |
-| Try to login without username and password                           | 7                                                            |
-| Try to close error message                                           | 8                                                            |
-| Login after error                                                    | 9                                                            |
+|                                        | Try to login with locked user                                                            | 2      |
+| Try to login with incorrect username                                 | 3                                                            | 3
+| Try to login with incorrect password                                 | 4                                                            | 4
+| Try to login with without username                                   | 5                                                            | 5
+| Try to login with without password                                   | 6                                                            | 6
+| Try to login without username and password                           | 7                                                            | 7
+| Try to close error message                                           | 8                                                            | 8
+| Login after error                                                    | 9                                                            | 9
 | Cart                                                                 | Open empty cart                                              | 10     |
 | Check that product in cart has all attributes                        | 11                                                           |
 | Remove product from cart                                             | 12                                                           |
