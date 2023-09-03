@@ -4,4 +4,3 @@ playwright-report/
 playwright/.cache/
 allure-results/
 allure-report/
-.env
