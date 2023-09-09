@@ -131,7 +131,7 @@ check tests on broken web-site :
 npm run test:fail
 ```
 
-## Running the Tests
+## Generate Report
 
 To generate Allure report run:
 
