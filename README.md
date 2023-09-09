@@ -1,6 +1,6 @@
 # 🎭 Playwright Auto Tests Portfolio for [Sauce Labs](https://www.saucedemo.com) Website
 
-## Overview
+## 🔍 Overview
 
 This repository contains an automated test portfolio using Playwright, written in JavaScript, to test the Sauce Labs website using the Page Object Model (POM) design pattern. The tests aim to ensure the functionality and user experience of the Sauce Labs website are consistent and robust.
 
@@ -59,7 +59,7 @@ This repository contains an automated test portfolio using Playwright, written i
 | 47     | Check that all prices on overview page counted properl               | E2E      |
 </details>
 
-## Test Directory Structure
+## 🗂️ Test Directory Structure
   
 ### The tests are organized using the Page Object Model design pattern to enhance readability and maintainability. Here's an overview of the directory structure:
 
@@ -99,7 +99,7 @@ tests
 </details>
 
 
-## Installation
+## ⚙️ Installation
 
 1. Clone this repository to your local machine.
 2. Navigate to the project's root directory using the terminal or command prompt.
@@ -113,7 +113,7 @@ npm install
 npx playwright install
 ```
 
-## Running the Tests
+## ⚡️ Running the Tests
 
 To execute the test cases against the Sauce Labs website, simply run the following command:
 
@@ -127,7 +127,7 @@ check tests on broken web-site :
 npm run test:fail
 ```
 
-## Generate Report
+## 📊 Generate Report
 
 To generate Allure report run:
 
@@ -141,7 +141,7 @@ npm run allure-report
   <img src="https://github.com/egorsoroka8/content/raw/main/allure.gif" alt="Your GIF" />
 </div>
 
-## Docker
+## 🐳 Docker
 
 You can run this tests by docker as well. By default report will be hosted on port 3030, but you can change it in Makefile run command and package.json (allure:report, allure:open) files.
 
@@ -167,7 +167,7 @@ In case you want to see logs, use :
 make logs
 ```
 
-## Continuous Integration (Optional)
+## 📦 Continuous Integration (Optional)
 
 You can integrate this test suite with your preferred CI/CD tool (e.g., Jenkins, CircleCI) to run the tests automatically on each code commit or deployment.
 
