@@ -143,7 +143,7 @@ npm run allure-report
 
 ## 🐳 Docker
 
-You can run this tests by docker as well. By default report will be hosted on port 3030, but you can change it in Makefile run command and package.json (allure:report, allure:open) files.
+You can run this tests using docker as well. By default report will be hosted on port 3030, but you can change it in Makefile (run command) and package.json (allure:report, allure:open) files.
 
 1. Clone this repository to your local machine.
 ```bash
