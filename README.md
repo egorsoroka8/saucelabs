@@ -147,8 +147,7 @@ npm run allure-report
   <img src="https://github.com/egorsoroka8/content/raw/main/allure.gif" alt="Your GIF" />
 </div>
 
-<a id="docker"></a>
-## 🐳 Docker
+## 🐳 Docker (#docker)
 
 You can run this tests using docker as well. By default report will be hosted on port 3030, but you can change it in Makefile (run command) and package.json (allure:report, allure:open) files.
 
