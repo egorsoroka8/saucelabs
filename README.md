@@ -148,8 +148,6 @@ npm run allure-report
 <a id="docker"></a>
 ## 🐳 Docker  
 
-You can run this tests using docker as well. By default report will be hosted on port 3030, but you can change it in Makefile (run command) and package.json (allure:report, allure:open) files.
-
 1. Clone this repository to your local machine.
 ```bash
 git clone git@github.com:egorsoroka8/saucelabs.git
@@ -171,6 +169,8 @@ In case you want to see logs, use :
 ```bash
 make logs
 ```
+
+By default report will be hosted on port 3030, but you can change it in Makefile (run command) and package.json (allure:report, allure:open) files.
 
 ## 📦 Continuous Integration (Optional)
 
