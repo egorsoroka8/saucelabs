@@ -147,6 +147,7 @@ npm run allure-report
 </div>
 
 ## 🐳 [Docker](#docker)
+<a id="docker"></a>
 
 You can run this tests using docker as well. By default report will be hosted on port 3030, but you can change it in Makefile (run command) and package.json (allure:report, allure:open) files.
 
