@@ -102,6 +102,9 @@ tests
 ## ⚙️ Installation
 
 1. Clone this repository to your local machine.
+```bash
+git clone git@github.com:egorsoroka8/saucelabs.git
+```
 2. Navigate to the project's root directory using the terminal or command prompt.
 3. Install the project dependencies by running the following command:
 
