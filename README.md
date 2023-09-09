@@ -113,10 +113,6 @@ npm install
 npx playwright install
 ```
 
-## Configuration
-
-You can change configuration in playwright.config.js
-
 ## Running the Tests
 
 To execute the test cases against the Sauce Labs website, simply run the following command:
@@ -145,6 +141,31 @@ npm run allure-report
   <img src="https://github.com/egorsoroka8/content/raw/main/allure.gif" alt="Your GIF" />
 </div>
 
+## Docker
+
+You can run this tests by docker as well. By default report will be hosted on port 3030, but you can change it in Makefile run command and package.json (allure:report, allure:open) files.
+
+1. Clone this repository to your local machine.
+```bash
+git clone git@github.com:egorsoroka8/saucelabs.git
+```
+2. Create image.
+```bash
+make build
+```
+3. Run tests.
+```bash
+make run
+```
+4. Generate report.
+```bash
+make report
+```
+
+In case you want to see logs, use :
+```bash
+make logs
+```
 
 ## Continuous Integration (Optional)
 
