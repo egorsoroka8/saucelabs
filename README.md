@@ -4,6 +4,9 @@
 
 This repository contains an automated test portfolio using Playwright, written in JavaScript, to test the Sauce Labs website using the Page Object Model (POM) design pattern. The tests aim to ensure the functionality and user experience of the Sauce Labs website are consistent and robust.
 
+To jump to the specific section, [click here](#docker).
+
+
 ## Test cases list
 <details>
 <summary>Show List</summary>
